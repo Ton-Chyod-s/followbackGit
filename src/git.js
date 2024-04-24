@@ -1,6 +1,3 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
-
 async function main(username) {
     const seguidores = [];
     const followers = await fetch(`https://api.github.com/users/${username}/followers`);
