@@ -1,6 +1,15 @@
 const { main } = require('./src/git');
+const express = require('express');
 
-(async () => {
-    const result = await main("Ton-Chyod-s");
-    console.log(result);
-})();
+const server = express();
+const port = 3000;
+
+server.get('/api/:username', async (req, res) => {
+    const { username } = req.params;
+    const result = await main(username);
+    res.json(result);
+});
+
+server.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
