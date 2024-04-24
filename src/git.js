@@ -15,6 +15,7 @@ async function main(username) {
     const seguidorMutuo = {};
     const naoSeguidor = {};
     let cont = 0;
+    
     for (let i = 0; i < seguindo.length; i++) {
         for (let j = 0; j < seguidores.length; j++) {
             const segdores = seguidores[i];
