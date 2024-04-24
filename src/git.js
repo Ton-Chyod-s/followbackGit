@@ -25,7 +25,7 @@ async function main(username) {
         }
     }
     if (Object.keys(naoSeguidor).length === 0) {
-        naoSeguidor["erro"] = "Nenhum não seguidor";
+        naoSeguidor["erro"] = "Todos seguidores estão seguindo de volta!";
     }
     return naoSeguidor;
 }
