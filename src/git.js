@@ -19,9 +19,9 @@ async function main(username) {
     for (let i = 0; i < seguindo.length; i++) {
         const segdo = seguindo[i];
         if (seguidores.includes(segdo)) {
-            seguidorMutuo[`nome${i}`] = segdo;
+            seguidorMutuo[`seguidor ${i}`] = segdo;
         } else {
-            naoSeguidor[`nome${i}`] = segdo;
+            naoSeguidor[`seguidor ${i}`] = segdo;
         }
     }
     if (Object.keys(naoSeguidor).length === 0) {
