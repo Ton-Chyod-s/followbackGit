@@ -16,13 +16,16 @@ async function main(username) {
         seguidores.push(dataFollowing[i].login);
     }
 
-    console.log(seguindo);
-    console.log(seguidores);
+    for (let i = 0; i < seguindo.length; i++) {
+        for (let j = 0; j < seguidores.length; j++) {
+            if (seguindo[i] === seguidores[j]) {
+                console.log(`Usuário: ${username} segue ${seguindo[i]} e é seguido por ${seguidores[j]}`);
+            } else {
+                console.log(`Usuário: ${username} segue ${seguindo[i]} e não é seguido por ${seguidores[j]}`);
+            }
+        }
+    }
 
-
-
-
-    
   }
   
   if (require.main === module) {
