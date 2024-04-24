@@ -4,7 +4,7 @@ const express = require('express');
 const server = express();
 const port = 3000;
 
-server.get('/api/:username', async (req, res) => {
+server.get('/:username', async (req, res) => {
     const { username } = req.params;
     const result = await main(username);
     res.json(result);
