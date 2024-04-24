@@ -15,19 +15,32 @@ async function main(username) {
     for (let i = 0; i < dataFollowing.length; i++) {
         seguidores.push(dataFollowing[i].login);
     }
-
+    const seguidorMutuo = [];
+    const naoSeguidor = [];
+    let cont = 0;
     for (let i = 0; i < seguindo.length; i++) {
         for (let j = 0; j < seguidores.length; j++) {
-            if (seguindo[i] === seguidores[j]) {
-                console.log(`Usuário: ${username} segue ${seguindo[i]} e é seguido por ${seguidores[j]}`);
-            } else {
-                console.log(`Usuário: ${username} segue ${seguindo[i]} e não é seguido por ${seguidores[j]}`);
+            const segdo = seguindo[i];
+            const segdores = seguidores[j];
+            if (segdo === segdores) {
+                cont += 1;
+                seguidorMutuo.push(seguindo[i]);
+                break
             }
         }
+        if (cont === 0) {
+            naoSeguidor.push(seguindo[i]);
+        }
+        cont = 0;
     }
+    return naoSeguidor;
+}
 
-  }
-  
-  if (require.main === module) {
-    main("Ton-Chyod-s");
-  }
+module.exports = { main };
+
+if (require.main === module) {
+    (async () => {
+        const result = await main("Ton-Chyod-s");
+        console.log(result);
+    })();
+}
