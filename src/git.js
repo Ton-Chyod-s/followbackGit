@@ -24,9 +24,8 @@ async function main(username) {
             naoSeguidor[`nome${i}`] = segdo;
         }
     }
-    if (naoSeguidor.length === 0) {
-        naoSeguidor[`nome${i}`] = "Nenhum não seguidor";
-
+    if (Object.keys(naoSeguidor).length === 0) {
+        naoSeguidor["erro"] = "Nenhum não seguidor";
     }
     return naoSeguidor;
 }
