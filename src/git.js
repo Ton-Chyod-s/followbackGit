@@ -34,7 +34,7 @@ module.exports = { main };
 
 if (require.main === module) {
     (async () => {
-        const result = await main("Ton-Chyod-s");
+        const result = await main("Ton Chyod-s");
         console.log(result);
     })();
 }
