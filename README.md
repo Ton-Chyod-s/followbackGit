@@ -10,7 +10,7 @@ Este script em Node.js verifica se seus seguidores no GitHub se estão seguindo 
 
     ```bash
     npm install
-    node index.js
+    node git.js
 
 ## Exemplo de Saída
     
@@ -19,7 +19,10 @@ Este script em Node.js verifica se seus seguidores no GitHub se estão seguindo 
     "seguidor 1": "usuário2",
     "erro": "Todos os seguidores estão seguindo de volta!"
     }
-        
+
+
+
+
 ## Contribuição
 
 Sinta-se à vontade para contribuir abrindo issues ou pull requests.
