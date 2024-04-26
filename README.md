@@ -10,7 +10,7 @@ Este script em Node.js verifica se seus seguidores no GitHub se estão seguindo 
 
     ```bash
     npm install
-    node git.js
+    node src/git.js
 
 ## Exemplo de Saída
     
