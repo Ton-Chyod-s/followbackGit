@@ -20,7 +20,7 @@ Este script em Node.js verifica se seus seguidores no GitHub estão seguindo voc
     "erro": "Todos os seguidores estão seguindo de volta!"
     }
 
-### Api GitHub Followers Checker
+### ~ Api GitHub Followers Checker
 
 #### Como Usar
 
