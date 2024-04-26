@@ -1,6 +1,6 @@
 # GitHub Followers Checker
 
-Este script em Node.js verifica se seus seguidores no GitHub se estão seguindo você de volta. Ele busca a lista de seguidores e seguidos para um determinado nome de usuário do GitHub e identifica seguidores mútuos e não seguidores.
+Este script em Node.js verifica se seus seguidores no GitHub estão seguindo você de volta. Ele busca a lista de seguidores e seguidos para um determinado nome de usuário do GitHub e identifica seguidores mútuos e não seguidores.
 
 ## Como Usar
 
