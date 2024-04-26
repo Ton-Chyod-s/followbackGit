@@ -20,8 +20,28 @@ Este script em Node.js verifica se seus seguidores no GitHub estão seguindo voc
     "erro": "Todos os seguidores estão seguindo de volta!"
     }
 
+### Api GitHub Followers Checker
 
+#### Como Usar
 
+1. Clone este repositório.
+2. Instale o Node.js, se ainda não o fez.
+3. Execute os seguintes comandos no seu terminal:
+
+    ```bash
+    npm install
+    npm install express, nodemon
+    nodemon index.js
+4. Acesse um navegador com seguinte endereço
+   
+    ```bash
+    http://localhost:3000/<usuário_a_ser_pesquisado>
+    
+Substitua <usuário_a_ser_pesquisado> pelo nome de usuário do GitHub que você deseja pesquisar (por exemplo, Ton Chyod-s).
+
+#### Exemplo de Saída
+    
+    {"seguidor 0": "usuário1","seguidor 1": "usuário2","erro": "Todos os seguidores estão seguindo de volta!"}
 
 ## Contribuição
 
