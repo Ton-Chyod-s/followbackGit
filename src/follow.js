@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 async function follow(username) {
     const seguidores = [];
     const followersResponse = await fetch(`https://api.github.com/users/${username}/followers`);
@@ -28,6 +27,3 @@ if (require.main === module) {
 }
 
 // https://github.com/settings/tokens 
-=======
-// lol
->>>>>>> parent of 9c93934 (doc: att)
