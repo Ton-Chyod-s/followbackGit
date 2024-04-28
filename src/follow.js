@@ -1,6 +1,13 @@
+const token = require('./chave/token');
+
 async function follow(username) {
     const seguidores = [];
-    const followersResponse = await fetch(`https://api.github.com/users/${username}/followers`);
+    const followersResponse = await fetch(`https://api.github.com/users/${username}/followers`,{
+        headers: {
+            'Authorization': `token ${token}`
+        }
+    });
+
     const dataFollowers = await followersResponse.json();
     for (let i = 0; i < dataFollowers.length; i++) {
         seguidores.push(dataFollowers[i].login);
