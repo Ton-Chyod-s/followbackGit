@@ -48,11 +48,12 @@ async function main(username) {
 
     const seguidorMutuo = {};
     const naoSeguidor = {};
+    let numSeguidor = 0;
 
-    
     for (let i = 0; i <= seguindo.length; i++) {
         const segdo = seguindo[i];
         if (i >= seguindo.length) {
+            numSeguidor ++;
             break;
         } else if (segdo === undefined) {
             naoSeguidor[`seguidor ${i}`] = "Nenhum seguidor encontrado!";
@@ -63,8 +64,12 @@ async function main(username) {
             naoSeguidor[`seguidor ${i}`] = segdo;
         }
     }
-    if (Object.keys(naoSeguidor).length === 0) {
+    if (Object.keys(naoSeguidor).length === 0 && numSeguidor === 0) {
         naoSeguidor["erro"] = "Todos seguidores estão seguindo de volta!";
+    } else {
+        if (seguindo.length === 0) {
+            naoSeguidor["erro"] = "Nenhum seguidor encontrado!";
+        }
     }
     return naoSeguidor;
 }
@@ -73,7 +78,7 @@ module.exports = { main };
 
 if (require.main === module) {
     (async () => {
-        const result = await main("silvniv");
+        const result = await main("kleber86");
         console.log(result);
     })();
 }
