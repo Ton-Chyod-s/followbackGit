@@ -31,7 +31,7 @@ async function follow(username, user) {
             if (!followResponse.ok) {
                 // console.error(`Erro ao seguir ${seguidores[i]}`);
                 const seguindo = [];
-                const followingResponse = await fetch(`https://api.github.com/users/${user}/following`,{
+                const followingResponse = await fetch(`https://api.github.com/users/${user}/following?page=${page}&per_page=${perPage}`,{
                     headers: {
                         'Authorization': `token ${token}`
                     }
@@ -40,7 +40,7 @@ async function follow(username, user) {
                 for (let i = 0; i < dataFollowing.length; i++) {
                     seguindo.push(dataFollowing[i].login);
                 }
-                if ( seguidores[i] in seguindo){
+                 if ( seguindo.includes(seguidores[i] )){
                     console.log(`Você já segue ${seguidores[i]}`);
                 } else {
                     console.error(`Erro ao seguir ${seguidores[i]}`);
@@ -56,7 +56,7 @@ module.exports = { follow };
 // Código de exemplo para testar a função follow
 if (require.main === module) {
     (async () => {
-        const result = await follow("programadorLhama", "silvniv");
+        const result = await follow("Ton-Chyod-s", "silvniv");
         console.log(result);
     })();
 }
