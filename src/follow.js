@@ -40,6 +40,11 @@ async function follow(username, user) {
                 for (let i = 0; i < dataFollowing.length; i++) {
                     seguindo.push(dataFollowing[i].login);
                 }
+                if ( seguidores[i] in seguindo){
+                    console.log(`Você já segue ${seguidores[i]}`);
+                } else {
+                    console.error(`Erro ao seguir ${seguidores[i]}`);
+                }
             } 
         }
         page++;
