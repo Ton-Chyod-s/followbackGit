@@ -5,26 +5,46 @@ let page = 1; // Inicializa a página para o primeiro loop
 
 async function main(username) {
     const seguidores = [];
-    const followersResponse = await fetch(`https://api.github.com/users/${username}/followers`, {
-        headers: {
-            'Authorization': `token ${token}`
+    while (true) { 
+        const respostaSeguidores = await fetch(`https://api.github.com/users/${username}/followers?page=${page}&per_page=${perPage}`, {
+            headers: {
+                'Authorization': `token ${token}`
+            }
+        });
+        if (!respostaSeguidores.ok) {
+            const erro = await respostaSeguidores.json();
+            throw new Error(`GitHub API Error: ${erro.message}`);
         }
-    });
-    const dataFollowers = await followersResponse.json();
-    for (let i = 0; i < dataFollowers.length; i++) {
-        seguidores.push(dataFollowers[i].login);
+        const dataFollowers = await respostaSeguidores.json();
+        for (let i = 0; i < dataFollowers.length; i++) {
+            seguidores.push(dataFollowers[i].login);
+        }
+        if (dataFollowers.length < perPage) {
+            break; 
+        }
+        page++;
     }
 
     const seguindo = [];
-    const followingResponse = await fetch(`https://api.github.com/users/${username}/following`, {
+    while (true) {   
+            const respostaSeguindo = await fetch(`https://api.github.com/users/${username}/following?page=${page}&per_page=${perPage}`, {
         headers: {
             'Authorization': `token ${token}`
+            }
+        });
+        if (!respostaSeguindo.ok) {
+            const erro = await respostaSeguindo.json();
+            throw new Error(`GitHub API Error: ${erro.message}`);
         }
-    });
-    const dataFollowing = await followingResponse.json();
-    for (let i = 0; i < dataFollowing.length; i++) {
-        seguindo.push(dataFollowing[i].login);
-    };
+        const dataFollowing = await respostaSeguindo.json();
+        for (let i = 0; i < dataFollowing.length; i++) {
+            seguindo.push(dataFollowing[i].login);
+        };
+        if (dataFollowing.length < perPage) {
+            break; 
+        }
+        page++;
+    }
 
     const seguidorMutuo = {};
     const naoSeguidor = {};
