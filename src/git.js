@@ -49,9 +49,15 @@ async function main(username) {
     const seguidorMutuo = {};
     const naoSeguidor = {};
 
-    for (let i = 0; i < seguindo.length; i++) {
+    
+    for (let i = 0; i <= seguindo.length; i++) {
         const segdo = seguindo[i];
-        if (seguidores.includes(segdo)) {
+        if (i >= seguindo.length) {
+            break;
+        } else if (segdo === undefined) {
+            naoSeguidor[`seguidor ${i}`] = "Nenhum seguidor encontrado!";
+            return naoSeguidor;
+        } else if (seguidores.includes(segdo)) {
             seguidorMutuo[`seguidor ${i}`] = segdo;
         } else {
             naoSeguidor[`seguidor ${i}`] = segdo;
