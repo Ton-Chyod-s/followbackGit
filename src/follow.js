@@ -30,9 +30,9 @@ async function follow(username) {
             });
             if (!followResponse.ok) {
                 console.error(`Erro ao seguir ${seguidores[i]}`);
-            }
-            page++;
+            } 
         }
+        page++;
     }
 }
 
