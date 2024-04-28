@@ -64,7 +64,7 @@ async function main(username) {
             naoSeguidor[`seguidor ${i}`] = segdo;
         }
     }
-    if (Object.keys(naoSeguidor).length === 0 && numSeguidor === 0) {
+    if (Object.keys(naoSeguidor).length === 0 && numSeguidor === 1) {
         naoSeguidor["erro"] = "Todos seguidores estão seguindo de volta!";
     } else {
         if (seguindo.length === 0) {
@@ -78,7 +78,7 @@ module.exports = { main };
 
 if (require.main === module) {
     (async () => {
-        const result = await main("kleber86");
+        const result = await main("Ton-Chyod-s");
         console.log(result);
     })();
 }
