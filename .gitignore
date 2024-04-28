@@ -1527,3 +1527,4 @@ node_modules/yallist/README.md
 node_modules/yallist/yallist.js
 token/token.js
 chave/token.js
+src/chave/token.js

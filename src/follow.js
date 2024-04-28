@@ -1,4 +1,4 @@
-const token = require('./chave/token');
+const { token } = require('./chave/token');
 
 async function follow(username) {
     const seguidores = [];
