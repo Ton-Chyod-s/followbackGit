@@ -69,15 +69,23 @@ async function follow(username, user) {
     // seguir usuario selecionado na lista seguindo 
     for (let i = 0; i < novosSeguidores.length; i++) {
         try {
-            await fetch(`https://api.github.com/users/${novosSeguidores[i]}/following`, {
-            headers: {
-                'Authorization': `token ${token}`
-                }
+            await fetch(`https://api.github.com/user/following/${novosSeguidores[i]}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${token}`
+                    }
             });
         } catch (error) {
             console.error('Erro ao seguir o usuário', error);
         }
-    }   
+    }
+    if (novosSeguidores.length === 0) {
+        const msg = {
+            'error': "Nenhum novo seguidor encontrado!"
+        };
+        return msg;
+    } else {
+        return novosSeguidores;}
 }
 
 module.exports = { follow };
@@ -87,5 +95,6 @@ module.exports = { follow };
 if (require.main === module) {
     (async () => {
         const result = await follow("silvniv", "Ton-Chyod-s");
+        console.log(result);
     })();
 }
