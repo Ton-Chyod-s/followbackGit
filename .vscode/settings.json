@@ -1,3 +1,7 @@
 {
-    "statusBarCustomColor.primaryBkColor": "#E43F31"
+    "statusBarCustomColor.primaryBkColor": "#1F1F1F",
+    "statusBarCustomItem.text": "DevTonChyod-s",
+    "statusBarCustomItem.tooltip": "This Visual Studio Code belongs to DevTonChyod-s.",
+    "statusBarCustomItem.icon": "🤏",
+    "statusBarCustomColor.secondaryBkColor": "#FE0000"
 }
