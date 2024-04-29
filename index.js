@@ -8,7 +8,8 @@ const port = 3000;
 server.get('/', (req, res) => {
     res.json({
         'Doc': "Welcome to the Git User Info API",
-        'Usage': "To get the user info, use the endpoint /:username where username is the github username",
+        'Comp': "To get the user info, use the endpoint /:username where username is the github username",
+        'Seguir': "To get the user info, use the endpoint /:username where username is the github username"
     });
 });
 
@@ -18,9 +19,10 @@ server.get('/comparacao/:username', async (req, res) => {
     res.json(result);
 });
 
-server.get('/seguir/:username', async (req, res) => {
+server.get('/seguir/:username/:user', async (req, res) => {
     const { username } = req.params;
-    const result = await follow(username);
+    const { user } = req.params.user;
+    const result = await follow(username, user);
     res.json(result);
 });
 
