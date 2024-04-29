@@ -1,3 +1,4 @@
+const { page, perPage } = require(' qtdePG ');
 
 async function funcSeguidores(username) {
     const seguidores = [];
@@ -23,3 +24,11 @@ async function funcSeguidores(username) {
     return seguidores;
 }
 module.exports = { funcSeguidores };
+
+// Código de exemplo para testar a função follow
+if (require.main === module) {
+    (async () => {
+        const result = await funcSeguidores("Ton-Chyod-s");
+        console.log(result);
+    })();
+}
