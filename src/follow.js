@@ -83,6 +83,5 @@ module.exports = { follow };
 if (require.main === module) {
     (async () => {
         const result = await follow("silvniv", "Ton-Chyod-s");
-        console.log(result);
     })();
 }
