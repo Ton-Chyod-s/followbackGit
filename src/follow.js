@@ -4,6 +4,7 @@ const perPage = 500; // Número de resultados por página
 let page = 1; // Inicializa a página para o primeiro loop
 
 async function follow(username, user) {
+    // verificando os seguidores do usuario 1
     const seguidores = [];
     while (true) { 
         const respostaSeguidores = await fetch(`https://api.github.com/users/${username}/followers?page=${page}&per_page=${perPage}`, {
@@ -24,7 +25,7 @@ async function follow(username, user) {
         }
         page++;
     }
-
+    // verificando os usuarios seguidores do usuario 2
     const seguindo = [];
     while (true) {   
             const respostaSeguindo = await fetch(`https://api.github.com/users/${user}/following?page=${page}&per_page=${perPage}`, {
@@ -45,7 +46,6 @@ async function follow(username, user) {
         }
         page++;
     }
-
     for (let i = 0; i <= seguindo.length; i++) {
         const segdo = seguindo[i];
         if (i >= seguindo.length) {
@@ -56,15 +56,21 @@ async function follow(username, user) {
     }
 
     // verificando ja se esta seguindo e formando um lista se ja segue
-    let jaSeguindo = [];
     for (let i = 0; i < seguidores.length; i++) {
-        if (seguidores.includes(seguindo[i])) {
-            jaSeguindo.push(seguindo[i]);
+        if (seguindo.includes(seguidores[i])) {
+            seguindo.pop(i);
         }
-    
-
-            
     }
+
+    // seguir usuario selecionado na lista seguindo 
+    for (let i = 0; i < seguindo.length; i++) {
+        await fetch(`https://api.github.com/user/following/${seguindo[i]}`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `token ${token}`
+            }
+        });
+    }   
 }
 
 module.exports = { follow };
@@ -72,7 +78,7 @@ module.exports = { follow };
 // Código de exemplo para testar a função follow
 if (require.main === module) {
     (async () => {
-        const result = await follow("Ton-Chyod-s", "silvniv");
+        const result = await follow("silvniv", "Ton-Chyod-s");
         console.log(result);
     })();
 }
