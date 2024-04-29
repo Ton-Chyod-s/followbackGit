@@ -1,32 +1,10 @@
 const { token } = require('./key/token');
 const { funcSeguidores } = require('./utility/followers');
-
-const perPage = 500; // Número de resultados por página
-let page = 1; // Inicializa a página para o primeiro loop
+const { funcSeguir } = require('./utility/follow');
 
 async function main(username) {
     const seguidores = await funcSeguidores(username);
-
-    const seguindo = [];
-    while (true) {   
-            const respostaSeguindo = await fetch(`https://api.github.com/users/${username}/following?page=${page}&per_page=${perPage}`, {
-        headers: {
-            'Authorization': `token ${token}`
-            }
-        });
-        if (!respostaSeguindo.ok) {
-            const erro = await respostaSeguindo.json();
-            throw new Error(`GitHub API Error: ${erro.message}`);
-        }
-        const dataFollowing = await respostaSeguindo.json();
-        for (let i = 0; i < dataFollowing.length; i++) {
-            seguindo.push(dataFollowing[i].login);
-        };
-        if (dataFollowing.length < perPage) {
-            break; 
-        }
-        page++;
-    }
+    const seguindo = await funcSeguir(username);
 
     const seguidorMutuo = {};
     const naoSeguidor = {};
