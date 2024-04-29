@@ -1,5 +1,6 @@
-const seguidores = [];
+
 async function funcSeguidores(username) {
+    const seguidores = [];
     while (true) { 
         const respostaSeguidores = await fetch(`https://api.github.com/users/${username}/followers?page=${page}&per_page=${perPage}`, {
             headers: {
@@ -19,5 +20,6 @@ async function funcSeguidores(username) {
         }
         page++;
     }
+    return seguidores;
 }
-module.exports = { seguidores, funcSeguidores};
+module.exports = { funcSeguidores };
