@@ -54,17 +54,17 @@ async function follow(username, user) {
             return "Nenhum seguidor encontrado!";
         }
     }
-
+    let novosSeguidores = [];
     // verificando ja se esta seguindo e formando um lista se ja segue
     for (let i = 0; i < seguidores.length; i++) {
         if (seguindo.includes(seguidores[i])) {
-            seguindo.pop(i);
+            novosSeguidores.push(seguidores[i]);
         }
     }
 
     // seguir usuario selecionado na lista seguindo 
-    for (let i = 0; i < seguindo.length; i++) {
-        await fetch(`https://api.github.com/user/following/${seguindo[i]}`, {
+    for (let i = 0; i < novosSeguidores.length; i++) {
+        await fetch(`https://api.github.com/user/following/${novosSeguidores[i]}`, {
         method: 'PUT',
         headers: {
             'Authorization': `token ${token}`
