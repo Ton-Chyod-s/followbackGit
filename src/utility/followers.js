@@ -1,5 +1,5 @@
-const { page, perPage } = require('../utilitario/qtdePG');
-const { token } = require('../chave/token');
+const { page, perPage } = require('../utility/qtdePG');
+const { token } = require('../key/token');
 
 async function funcSeguidores(username) {
     const seguidores = [];
