@@ -68,8 +68,7 @@ async function follow(username, user) {
     // seguir usuario selecionado na lista seguindo 
     for (let i = 0; i < novosSeguidores.length; i++) {
         try {
-            const followingResponse = await fetch(`https://api.github.com/users/${novosSeguidores[i]}/following`, {
-            method: 'PUT',
+            await fetch(`https://api.github.com/users/${novosSeguidores[i]}/following`, {
             headers: {
                 'Authorization': `token ${token}`
                 }
