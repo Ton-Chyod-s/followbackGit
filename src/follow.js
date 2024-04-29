@@ -54,15 +54,16 @@ async function follow(username, user) {
             return "Nenhum seguidor encontrado!";
         }
     }
-    let seguidoresMutuo = [];
+    let mesmoSeguidor = [];
     let novosSeguidores = [];
     // verificando ja se esta seguindo e formando um lista se ja segue
     for (let i = 0; i < seguidores.length; i++) {
-        if (seguindo.includes(seguidores[i])) {
-            seguidoresMutuo.push(seguidores[i]);
-        } else {
-            novosSeguidores.push(seguidores[i]);
-        }
+        if (seguidores[i] !== user) {
+            if (seguindo.includes(seguidores[i])) {
+                mesmoSeguidor.push(seguidores[i]);
+            } else {
+                novosSeguidores.push(seguidores[i]);
+            }}
     }
 
     // seguir usuario selecionado na lista seguindo 
