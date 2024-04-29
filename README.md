@@ -3,8 +3,22 @@
 Este script em Node.js verifica se seus seguidores no GitHub estão seguindo você de volta. Ele busca a lista de seguidores e seguidos para um determinado nome de usuário do GitHub e identifica seguidores mútuos e não seguidores.
 
 ## Como Usar
-
 1. Clone este repositório.
+1. Altere a pasta **chave#** para chave
+2. Altere o arquivo token com sua token registrada no link:
+   ```bash
+   https://github.com/settings/tokens
+   
+* Generate a personal access token
+* Nome token: 
+    * Note
+    * Expiration: No expiration
+    * Select scopes:
+      * repo full
+      * user full
+      * admin:ssh_signing_key full
+      * Finish generete token
+
 2. Instale o Node.js, se ainda não o fez.
 3. Execute os seguintes comandos no seu terminal:
 
