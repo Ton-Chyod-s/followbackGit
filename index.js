@@ -1,3 +1,4 @@
+const { follow } = require('./src/follow');
 const { main } = require('./src/git');
 const express = require('express');
 
@@ -14,6 +15,12 @@ server.get('/', (req, res) => {
 server.get('/comparacao/:username', async (req, res) => {
     const { username } = req.params;
     const result = await main(username);
+    res.json(result);
+});
+
+server.get('/seguir/:username', async (req, res) => {
+    const { username } = req.params;
+    const result = await follow(username);
     res.json(result);
 });
 
