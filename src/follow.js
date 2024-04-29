@@ -4,50 +4,66 @@ const perPage = 500; // Número de resultados por página
 let page = 1; // Inicializa a página para o primeiro loop
 
 async function follow(username, user) {
-    while (true) {
-        const seguidores = [];
-        const followersResponse = await fetch(`https://api.github.com/users/${username}/followers?page=${page}&per_page=${perPage}`,{
+    const seguidores = [];
+    while (true) { 
+        const respostaSeguidores = await fetch(`https://api.github.com/users/${username}/followers?page=${page}&per_page=${perPage}`, {
             headers: {
                 'Authorization': `token ${token}`
             }
         });
-        if (!followersResponse.ok) {
-            console.error(`Erro ao buscar seguidores de ${username}`);
-            return;
+        if (!respostaSeguidores.ok) {
+            const erro = await respostaSeguidores.json();
+            throw new Error(`GitHub API Error: ${erro.message}`);
         }
-
-        const dataFollowers = await followersResponse.json();
+        const dataFollowers = await respostaSeguidores.json();
         for (let i = 0; i < dataFollowers.length; i++) {
             seguidores.push(dataFollowers[i].login);
         }
-
-        for (let i = 0; i < seguidores.length; i++) {
-            const followResponse = await fetch(`https://api.github.com/user/following/${seguidores[i]}`, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `token ${token}`
-                }
-            });
-            if (!followResponse.ok) {
-                // console.error(`Erro ao seguir ${seguidores[i]}`);
-                const seguindo = [];
-                const followingResponse = await fetch(`https://api.github.com/users/${user}/following?page=${page}&per_page=${perPage}`,{
-                    headers: {
-                        'Authorization': `token ${token}`
-                    }
-                });
-                const dataFollowing = await followingResponse.json();
-                for (let i = 0; i < dataFollowing.length; i++) {
-                    seguindo.push(dataFollowing[i].login);
-                }
-                 if ( seguindo.includes(seguidores[i] )){
-                    console.log(`Você já segue ${seguidores[i]}`);
-                } else {
-                    console.error(`Erro ao seguir ${seguidores[i]}`);
-                }
-            } 
+        if (dataFollowers.length < perPage) {
+            break; 
         }
         page++;
+    }
+
+    const seguindo = [];
+    while (true) {   
+            const respostaSeguindo = await fetch(`https://api.github.com/users/${user}/following?page=${page}&per_page=${perPage}`, {
+        headers: {
+            'Authorization': `token ${token}`
+            }
+        });
+        if (!respostaSeguindo.ok) {
+            const erro = await respostaSeguindo.json();
+            throw new Error(`GitHub API Error: ${erro.message}`);
+        }
+        const dataFollowing = await respostaSeguindo.json();
+        for (let i = 0; i < dataFollowing.length; i++) {
+            seguindo.push(dataFollowing[i].login);
+        };
+        if (dataFollowing.length < perPage) {
+            break; 
+        }
+        page++;
+    }
+
+    for (let i = 0; i <= seguindo.length; i++) {
+        const segdo = seguindo[i];
+        if (i >= seguindo.length) {
+            break;
+        } else if (segdo === undefined) {
+            return "Nenhum seguidor encontrado!";
+        }
+    }
+
+    // verificando ja se esta seguindo e formando um lista se ja segue
+    let jaSeguindo = [];
+    for (let i = 0; i < seguidores.length; i++) {
+        if (seguidores.includes(seguindo[i])) {
+            jaSeguindo.push(seguindo[i]);
+        }
+    
+
+            
     }
 }
 
