@@ -1,4 +1,4 @@
-const { token } = require('./chave/token');
+const { token } = require('./key/token');
 
 const perPage = 500; // Número de resultados por página
 let page = 1; // Inicializa a página para o primeiro loop
