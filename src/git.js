@@ -1,4 +1,3 @@
-const { token } = require('./key/token');
 const { funcSeguidores } = require('./utility/followers');
 const { funcSeguir } = require('./utility/follow');
 
