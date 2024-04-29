@@ -54,10 +54,13 @@ async function follow(username, user) {
             return "Nenhum seguidor encontrado!";
         }
     }
+    let seguidoresMutuo = [];
     let novosSeguidores = [];
     // verificando ja se esta seguindo e formando um lista se ja segue
     for (let i = 0; i < seguidores.length; i++) {
         if (seguindo.includes(seguidores[i])) {
+            seguidoresMutuo.push(seguidores[i]);
+        } else {
             novosSeguidores.push(seguidores[i]);
         }
     }
@@ -71,9 +74,6 @@ async function follow(username, user) {
                 'Authorization': `token ${token}`
                 }
             });
-            const dataFollowing = await followingResponse.json();
-            console.log(`Seguindo ${novosSeguidores[i]}`);
-
         } catch (error) {
             console.error('Erro ao seguir o usuário', error);
         }
