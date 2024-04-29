@@ -82,6 +82,7 @@ async function follow(username, user) {
 
 module.exports = { follow };
 
+
 // Código de exemplo para testar a função follow
 if (require.main === module) {
     (async () => {
