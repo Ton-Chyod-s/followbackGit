@@ -16,7 +16,7 @@ async function follow(username, user) {
     }
     let mesmoSeguidor = [];
     let novosSeguidores = [];
-    
+
     // verificando ja se esta seguindo e formando um lista se ja segue
     for (let i = 0; i < seguidores.length; i++) {
         if (seguidores[i] !== user) {
