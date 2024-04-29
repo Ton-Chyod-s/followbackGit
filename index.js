@@ -7,9 +7,9 @@ const port = 3000;
 
 server.get('/', (req, res) => {
     res.json({
-        'Doc': "Welcome to the Git User Info API",
-        'Comp': "To get the user info, use the endpoint /:username where username is the github username",
-        'Seguir': "To get the user info, use the endpoint /:username where username is the github username"
+        '': "Bem vindo a API GitHub Followers Checker",
+        'Ver seguidores': "exemplo - comparacao/:username",
+        'Obter mais seguidores': "exemplo - /seguir/:username/:user",
     });
 });
 
