@@ -64,12 +64,16 @@ async function follow(username, user) {
 
     // seguir usuario selecionado na lista seguindo 
     for (let i = 0; i < novosSeguidores.length; i++) {
-        await fetch(`https://api.github.com/user/following/${novosSeguidores[i]}`, {
-        method: 'PUT',
-        headers: {
-            'Authorization': `token ${token}`
-            }
-        });
+        try {
+            await fetch(`https://api.github.com/user/following/${novosSeguidores[i]}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${token}`
+                }
+            });
+        } catch (error) {
+            console.error('Erro ao seguir o usuário', error);
+        }
     }   
 }
 
