@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 async function webScrapingData(url) {
     const browser = await puppeteer.launch({
-        // headless: false,
+        headless: false,
     });
     const page = await browser.newPage();
     await page.goto(url);
