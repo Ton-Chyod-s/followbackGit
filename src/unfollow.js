@@ -16,18 +16,19 @@ async function unfollow(username) {
         }).catch((err) => {
             naoDeixouDeSeguir.push(`Not Unfollow ${followers[i]}`);
         })
-
+        deixouDeSeguir.push(`Unfollow ${followers[i]}`);
         // if (deixouDeSeguir.length === 0) {
         //     return naoDeixouDeSeguir;
         // } else {
         //     return deixouDeSeguir;
         // }
     }
+    return deixouDeSeguir;
 }
 
 if (require.main === module) {
     (async () => {
-        const result = await unfollow("Ton-Chyod-s");
+        const result = await unfollow("silvniv");
         console.log(result);
     })();
 }
