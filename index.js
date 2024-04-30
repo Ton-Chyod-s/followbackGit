@@ -1,5 +1,6 @@
 const { follow } = require('./src/follow');
 const { main } = require('./src/git');
+const { unfollow } = require('./src/unfollow');
 const express = require('express');
 
 const server = express();
@@ -10,12 +11,19 @@ server.get('/', (req, res) => {
         '': "Bem vindo a API GitHub Followers Checker",
         'Ver seguidores': "exemplo - comparacao/:username",
         'Obter mais seguidores': "exemplo - /seguir/:username/:user",
+        'Deixar de seguir': "exemplo - /naoSeguir/:username"
     });
 });
 
 server.get('/comparacao/:username', async (req, res) => {
     const { username } = req.params;
     const result = await main(username);
+    res.json(result);
+});
+
+server.get('/naoSeguir/:username', async (req, res) => {
+    const { username } = req.params;
+    const result = await unfollow(username);
     res.json(result);
 });
 
