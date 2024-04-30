@@ -24,7 +24,7 @@ Este script em Node.js verifica se seus seguidores no GitHub estão seguindo voc
 
     ```bash
     npm install
-    node src/git.js
+    node src/checkFollower.js
 
 ## Exemplo de Saída
     
