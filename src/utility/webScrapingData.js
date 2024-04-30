@@ -16,6 +16,7 @@ async function webScrapingData(url) {
             description
         }
     });
+    
     await browser.close();
     return data;
 }
