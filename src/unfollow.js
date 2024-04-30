@@ -17,11 +17,12 @@ async function unfollow(username) {
             naoDeixouDeSeguir.push(`Not Unfollow ${followers[i]}`);
         })
         deixouDeSeguir.push(`Unfollow ${followers[i]}`);
-        // if (deixouDeSeguir.length === 0) {
-        //     return naoDeixouDeSeguir;
-        // } else {
-        //     return deixouDeSeguir;
-        // }
+        
+        if (deixouDeSeguir.length === 0) {
+            return naoDeixouDeSeguir;
+        } else {
+            return deixouDeSeguir;
+        }
     }
     return deixouDeSeguir;
 }
