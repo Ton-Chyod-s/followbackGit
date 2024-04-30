@@ -4,14 +4,14 @@ const { funcSeguir } = require('./utility/follow');
 
 async function follow(username, user) {
     const seguidores = await funcSeguidores(username);
-    const seguindo = await funcSeguir(username);
+    const seguindo = await funcSeguir(user);
    
     let novosSeguidores = [];
 
     // verificando ja se esta seguindo e formando um lista se ja segue
     for (let i = 0; i < seguidores.length; i++) {
         if (seguidores[i] !== user) {
-            if (seguindo.includes(seguidores[i])) {
+            if (!seguindo.includes(seguidores[i])) {
                     novosSeguidores.push(seguidores[i]);
                 }
             }}
