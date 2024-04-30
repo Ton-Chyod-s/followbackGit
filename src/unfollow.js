@@ -13,23 +13,22 @@ async function unfollow(username) {
             headers: {
                 'Authorization': `token ${token}`,
             }
-        }).then(response => {
-            deixouDeSeguir.push(`Unfollowed ${followers[i]}`);
-        }).catch(error => {
-            naoDeixouDeSeguir.push(`Not Unfollowed ${followers[i]}`);
-        });
+        }).catch((err) => {
+            naoDeixouDeSeguir.push(`Not Unfollow ${followers[i]}`);
+        })
 
-        if (deixouDeSeguir.length === 0) {
-            return naoDeixouDeSeguir;
-        } else {
-            return deixouDeSeguir;
-        }
+
+        // if (deixouDeSeguir.length === 0) {
+        //     return naoDeixouDeSeguir;
+        // } else {
+        //     return deixouDeSeguir;
+        // }
     }
 }
 
 if (require.main === module) {
     (async () => {
-        const result = await unfollow("silvniv");
+        const result = await unfollow("Ton-Chyod-s");
         console.log(result);
     })();
 }
