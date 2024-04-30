@@ -4,8 +4,8 @@ const { token } = require('./key/token');
 
 async function unfollow(username) {
     const followers = await main(username);
-    let deixouDeSeguir = [];
-    let naoDeixouDeSeguir = [];
+    let deixouDeSeguir = new Array();
+    let naoDeixouDeSeguir = new Array();
 
     for (let i in followers) {
         // console.log(followers[i])
@@ -14,9 +14,9 @@ async function unfollow(username) {
                 'Authorization': `token ${token}`,
             }
         }).then(response => {
-            deixouDeSeguir.push(`${followers[i]}`);
+            deixouDeSeguir.push(`Unfollowed ${followers[i]}`);
         }).catch(error => {
-            naoDeixouDeSeguir.push(`${followers[i]}`);
+            naoDeixouDeSeguir.push(`Not Unfollowed ${followers[i]}`);
         });
 
         if (deixouDeSeguir.length === 0) {
