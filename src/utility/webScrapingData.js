@@ -16,7 +16,6 @@ async function webScrapingData(url) {
     });
 
     await browser.close();
-    return data;
 }
 
 // Código de exemplo para testar a função follow
