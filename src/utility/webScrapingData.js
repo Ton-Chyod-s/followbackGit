@@ -9,14 +9,12 @@ async function webScrapingData(url) {
     await page.goto(url);
 
     const data = await page.evaluate(() => {
-        const title = document.querySelector('h1').innerText;
-        const description = document.querySelector('p').innerText;
-        return {
-            title,
-            description
+        const title = document.querySelector('span');
+          return {
+            title
         }
     });
-    
+
     await browser.close();
     return data;
 }
