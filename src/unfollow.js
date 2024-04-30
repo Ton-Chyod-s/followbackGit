@@ -13,19 +13,12 @@ async function unfollow(username) {
         }).then(response => {
             console.log(`Você deixou de seguir o usuário ${nomeDoUsuario}`);
         })
-        .catch(error => {
-            console.error('Ocorreu um erro:', error.response.data);
-        });
 
     }
-    return followers
 }
-
-unfollow("silvniv")
 
 if (require.main === module) {
     (async () => {
         const result = await unfollow("silvniv");
-        console.log(result);
     })();
 }
