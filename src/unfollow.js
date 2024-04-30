@@ -24,7 +24,6 @@ async function unfollow(username) {
         } else {
             return deixouDeSeguir;
         }
-
     }
 }
 
