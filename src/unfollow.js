@@ -22,9 +22,7 @@ async function unfollow(username) {
         return naoDeixouDeSeguir;
     } else {
         return deixouDeSeguir;
-    }
-    
-    return deixouDeSeguir;
+    };
 }
 
 if (require.main === module) {
