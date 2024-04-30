@@ -11,8 +11,10 @@ async function unfollow(username) {
                 'Authorization': `token ${token}`,
             }
         }).then(response => {
-            console.log(`Você deixou de seguir o usuário ${nomeDoUsuario}`);
-        })
+            console.log(`Você deixou de seguir o usuário ${followers[i]}`);
+        }).catch(error => {
+            console.error("Error unfollowing user.", error);
+        });
 
     }
 }
