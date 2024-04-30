@@ -1,11 +1,13 @@
-const { funcSeguidores } = require('./utility/followers');
-const { funcSeguir } = require('./utility/follow');
+const { main } = require("./checkFollower");
 
 async function unfollow(username) {
-    const seguidores = await funcSeguidores(username);
-    const seguindo = await funcSeguir(username);
+    const followers = await main(username);
+    for (let i in followers) {
+        console.log(followers[i])
+        
+    }
 
-    return "Tudo oks!"
+    return followers
 }
 
 unfollow("silvniv")
