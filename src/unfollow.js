@@ -5,8 +5,9 @@ async function unfollow(username) {
     for (let i in followers) {
         console.log(followers[i])
         
-    }
 
+        
+    }
     return followers
 }
 
