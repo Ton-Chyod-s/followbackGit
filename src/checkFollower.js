@@ -15,7 +15,7 @@ async function main(username) {
             numSeguidor ++;
             break;
         } else if (segdo === undefined) {
-            naoSeguidor[`seguidor ${i}`] = "Nenhum seguidor encontrado!";
+            naoSeguidor[`seguidor ${i}`] = "No followers found!";
             return naoSeguidor;
         } else if (seguidores.includes(segdo)) {
             seguidorMutuo[`seguidor ${i}`] = segdo;
@@ -24,10 +24,10 @@ async function main(username) {
         }
     }
     if (Object.keys(naoSeguidor).length === 0 && numSeguidor === 1) {
-        naoSeguidor["erro"] = "Todos seguidores estão seguindo de volta!";
+        naoSeguidor["erro"] = "All followers are following back!";
     } else {
         if (seguindo.length === 0) {
-            naoSeguidor["erro"] = "Nenhum seguidor encontrado!";
+            naoSeguidor["erro"] = "No followers found!";
         }
     }
     return naoSeguidor;

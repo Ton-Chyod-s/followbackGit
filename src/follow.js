@@ -11,7 +11,7 @@ async function follow(username, user) {
         if (i >= seguindo.length) {
             break;
         } else if (segdo === undefined) {
-            return "Nenhum seguidor encontrado!";
+            return "No followers found!";
         }
     }
     let mesmoSeguidor = [];
@@ -37,12 +37,12 @@ async function follow(username, user) {
                     }
             });
         } catch (error) {
-            console.error('Erro ao seguir o usuário', error);
+            console.error("Error following user.", error);
         }
     }
     if (novosSeguidores.length === 0) {
         const msg = {
-            'error': "Nenhum novo seguidor encontrado!"
+            'error': "No new followers found!"
         };
         return msg;
     } else {
