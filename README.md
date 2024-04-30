@@ -4,7 +4,7 @@ Este script em Node.js verifica se seus seguidores no GitHub estão seguindo voc
 
 ## Como Usar
 1. Clone este repositório.
-1. Altere a pasta **chave#** para **chave**
+1. Altere a pasta **key#** para **key**
 2. Altere o arquivo token com sua token registrada no link:
    ```bash
    https://github.com/settings/tokens
