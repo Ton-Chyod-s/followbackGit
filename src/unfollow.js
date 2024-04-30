@@ -4,6 +4,9 @@ const { token } = require('./key/token');
 
 async function unfollow(username) {
     const followers = await main(username);
+    let deixouDeSeguir = [];
+    let naoDeixouDeSeguir = [];
+
     for (let i in followers) {
         // console.log(followers[i])
         axios.delete(`https://api.github.com/user/following/${followers[i]}`, {
@@ -11,10 +14,16 @@ async function unfollow(username) {
                 'Authorization': `token ${token}`,
             }
         }).then(response => {
-            console.log(`Você deixou de seguir o usuário ${followers[i]}`);
+            deixouDeSeguir.push(`${followers[i]}`);
         }).catch(error => {
-            console.error("Error unfollowing user.", error);
+            naoDeixouDeSeguir.push(`${followers[i]}`);
         });
+
+        if (deixouDeSeguir.length === 0) {
+            return naoDeixouDeSeguir;
+        } else {
+            return deixouDeSeguir;
+        }
 
     }
 }
@@ -22,5 +31,6 @@ async function unfollow(username) {
 if (require.main === module) {
     (async () => {
         const result = await unfollow("silvniv");
+        console.log(result);
     })();
 }
