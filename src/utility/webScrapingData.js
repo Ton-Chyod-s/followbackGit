@@ -1,36 +1,12 @@
 const puppeteer = require('puppeteer');
 
 async function webScrapingData(nome,senha) {
-
-    function delay(time) {
-        return new Promise(function(resolve) { 
-            setTimeout(resolve, time)
-        });
-    }
-    async function clickElement(element) {
-        await page.waitForSelector(element);
-        return await page.locator(element).click();
-    }
-    async function selectOption(element, value) {
-        await page.waitForSelector(element);
-        return await page.select(element, value);
-    }
-    async function typeText(element, text) {
-        await page.waitForSelector(element);
-        return await page.type(element, text);
-    }
-    async function getText(element) {
-        await page.waitForSelector(element);
-        const elementHandle = await page.$(element);
-        return await page.evaluate(element => element.textContent, elementHandle);
-    }
-
     const browser = await puppeteer.launch({
         headless: false,
     });
     const page = await browser.newPage();
     await page.goto("https://github.com/settings/tokens");
-
+    
     // Preencher um campo
     await page.type('[id="login_field"]', nome);
     // Preencher um campo
@@ -64,6 +40,8 @@ async function webScrapingData(nome,senha) {
     // select all admin:SSH
     await page.locator('[value="admin:ssh_signing_key"]').click();
     
+    // generate token
+    await page.locator('button[type="submit"]').click();
 
 
     
