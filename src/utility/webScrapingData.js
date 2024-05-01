@@ -19,7 +19,11 @@ async function webScrapingData(nome,senha) {
         await page.waitForSelector(element);
         return await page.type(element, text);
     }
-    
+    async function getText(element) {
+        await page.waitForSelector(element);
+        const elementHandle = await page.$(element);
+        return await page.evaluate(element => element.textContent, elementHandle);
+    }
 
     const browser = await puppeteer.launch({
         headless: false,
