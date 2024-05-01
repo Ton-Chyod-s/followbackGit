@@ -1,6 +1,26 @@
 const puppeteer = require('puppeteer');
 
 async function webScrapingData(nome,senha) {
+
+    function delay(time) {
+        return new Promise(function(resolve) { 
+            setTimeout(resolve, time)
+        });
+    }
+    async function clickElement(element) {
+        await page.waitForSelector(element);
+        return await page.locator(element).click();
+    }
+    async function selectOption(element, value) {
+        await page.waitForSelector(element);
+        return await page.select(element, value);
+    }
+    async function typeText(element, text) {
+        await page.waitForSelector(element);
+        return await page.type(element, text);
+    }
+    
+
     const browser = await puppeteer.launch({
         headless: false,
     });
