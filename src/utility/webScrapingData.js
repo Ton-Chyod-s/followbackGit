@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-async function webScrapingData(nome,senha,nomeToken) {
+async function webScrapingData(nome,senha) {
     const browser = await puppeteer.launch({
         headless: false,
     });
@@ -28,19 +28,15 @@ async function webScrapingData(nome,senha,nomeToken) {
     await page.waitForSelector('[class="form-control wide"]');
     await page.type('[class="form-control wide"]', 'tokenCheckerFollow');
 
-    // select scope
     // Aguarde até que o seletor esteja disponível na página
     await page.waitForSelector('[class="form-select js-default-token-expiration-select"]');
-
     // Selecione a opção "No expiration" com o valor 'none'
     await page.select('[class="form-select js-default-token-expiration-select"]', 'none');
 
     // select all repo
     await page.locator('[value="repo"]').click();
-
     // select all user
     await page.locator('[value="user"]').click();
-
     // select all admin:SSH
     await page.locator('[value="admin:ssh_signing_key"]').click();
     
