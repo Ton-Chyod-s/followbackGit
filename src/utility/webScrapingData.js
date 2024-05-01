@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const { email, senha } = require('../key/usuario');
 
 async function webScrapingData(nome,senha) {
     const browser = await puppeteer.launch({
@@ -64,7 +65,7 @@ async function webScrapingData(nome,senha) {
 // Código de exemplo para testar a função follow
 if (require.main === module) {
     (async () => {
-        const result = await webScrapingData('hix_x@hotmail.com','Teamomtos2!');
+        const result = await webScrapingData(email, senha);
         console.log(result);
     })();
 }
