@@ -41,13 +41,17 @@ async function webScrapingData(nome,senha) {
     await page.locator('[value="admin:ssh_signing_key"]').click();
     
     // generate token
-    const button = await page.$('button[type="submit"]');
-    if (button) {
-        await button.click();
-        console.log('Botão clicado');
-    }
-    
+    await page.waitForSelector('button[type="submit"]');
+    await page.evaluate(() => {
+        const buttons = document.querySelectorAll('button[type="submit"]');
+        buttons.forEach(button => {
+            if (button.textContent.trim() === 'Generate token') {
+                button.click();
+            }
+        });
+    });
 
+   
 
     
     await browser.close();
