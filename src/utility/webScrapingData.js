@@ -35,22 +35,21 @@ async function webScrapingData(nome,senha,nomeToken) {
     // Selecione a opção "No expiration" com o valor 'none'
     await page.select('[class="form-select js-default-token-expiration-select"]', 'none');
 
-    // // esperando até encontrar o selector
-    // await page.waitForSelector('table[id="tbDiarios"]');
-    // // Aguardar um pouco
-    // await new Promise(resolve => setTimeout(resolve, 500));
+    // select all repo
+    await page.locator('[value="repo"]').click();
 
-    // const data = await page.evaluate(() => {
-    //     const title = document.querySelector('span');
-    //       return {
-    //         title
-    //     }
-    // });
+    // select all user
+    await page.locator('[value="user"]').click();
 
+    // select all admin:SSH
+    await page.locator('[value="admin:ssh_signing_key"]').click();
+    
+
+
+    
     await browser.close();
     let numGitDict = {
         'numero git': numGit.trim()
-    
     };
     return numGitDict;
 }
