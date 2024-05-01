@@ -41,7 +41,12 @@ async function webScrapingData(nome,senha) {
     await page.locator('[value="admin:ssh_signing_key"]').click();
     
     // generate token
-    await page.locator('button[type="submit"]').click();
+    const button = await page.$('button[type="submit"]');
+    if (button) {
+        await button.click();
+        console.log('Botão clicado');
+    }
+    
 
 
     
