@@ -57,6 +57,8 @@ async function webScrapingData(nome,senha) {
     console.log(tokengit);
 
     
+
+    
     await browser.close();
     let numGitDict = {
         'numero git': numGit.trim()
