@@ -77,6 +77,15 @@ async function webScrapingData(nome,senha) {
         });
     })();
 
+    // write usuario in file
+    (function () {
+        const token = `email = '';\nsenha = '';\n\nmodule.exports = { email, senha };`
+        const filePath = path.join(__dirname, 'key', 'usuario.js');
+        fs.writeFile(filePath, token, 'utf8', function (err) {
+            if (err) return console.log(err);
+        });
+    })();
+
     await browser.close();
     return 
 }
