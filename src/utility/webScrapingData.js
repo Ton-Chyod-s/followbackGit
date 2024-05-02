@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const { fs } = require('node:fs');
 const { email, senha } = require('../key/usuario');
 
 async function webScrapingData(nome,senha) {
@@ -57,8 +58,12 @@ async function webScrapingData(nome,senha) {
         const code = document.querySelector('code[id="new-oauth-token"]');
         return code.textContent;
     });
-    console.log(token);
+
+    // console.log(token);
     
+
+
+
 
     
     await browser.close();
