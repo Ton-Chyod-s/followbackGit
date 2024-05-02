@@ -22,7 +22,7 @@ async function webScrapingData(nome,senha) {
     const elementHandle = await page.$('[data-target="sudo-credential-options.githubMobileChallengeValue"]');
     // Extrair o texto do elemento usando page.evaluate()
     const numGit = await page.evaluate(element => element.textContent, elementHandle);
-    console.log(`Digite o numero: ${numGit.trim()}`);
+    console.log(`Digite o número: ${numGit.trim()}`);
 
     // genereta token
     await page.waitForSelector('[class="btn btn-sm select-menu-button"]');
