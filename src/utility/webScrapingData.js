@@ -52,7 +52,10 @@ async function webScrapingData(nome,senha) {
         });
     });
 
-    const elementHandleToken = await page.locator('code');
+    await page.waitForSelector('code[id="new-oauth-token"]');
+    
+    const elementHandleToken = await page.locator('code[id="new-oauth-token"]').timeout(10000);
+
     const tokengit = await page.evaluate(element => element.textContent, elementHandleToken);
     console.log(tokengit);
 
