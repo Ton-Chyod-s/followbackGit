@@ -1,5 +1,5 @@
 const { page, perPage } = require('./qtdePG');
-const { token } = require('../key/token');
+const { token } = require('./utility/key/token');
 
 async function funcSeguir(username) {
     const seguindo = [];
