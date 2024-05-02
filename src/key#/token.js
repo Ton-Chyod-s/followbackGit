@@ -1,3 +1,0 @@
-token = '###'
-
-module.exports = { token };
