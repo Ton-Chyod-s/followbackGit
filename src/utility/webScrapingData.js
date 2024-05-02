@@ -53,7 +53,7 @@ async function webScrapingData(nome,senha) {
             }
         });
     });
-    
+
     // wait for token
     await page.waitForSelector('code[id="new-oauth-token"]');
     const newToken = await page.evaluate(() => {
@@ -71,7 +71,7 @@ async function webScrapingData(nome,senha) {
     })();
 
 
-
+    
     
     await browser.close();
     let numGitDict = {
