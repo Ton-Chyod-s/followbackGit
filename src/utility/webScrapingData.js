@@ -53,13 +53,15 @@ async function webScrapingData(nome,senha) {
             }
         });
     });
-
+    
+    // wait for token
     await page.waitForSelector('code[id="new-oauth-token"]');
     const newToken = await page.evaluate(() => {
         const code = document.querySelector('code[id="new-oauth-token"]');
         return code.textContent;
     });
-
+    
+    // save token
     (function () {
         const token = `token = ${newToken};\n\nmodule.exports = { token };`
         const filePath = path.join(__dirname, 'key', 'token.js');
