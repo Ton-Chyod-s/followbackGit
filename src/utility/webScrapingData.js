@@ -62,6 +62,10 @@ async function webScrapingData(nome,senha) {
     });
     
     // save token
+    if (!fs.existsSync(path.join(__dirname, 'key'))) {
+        fs.mkdirSync(path.join(__dirname, 'key'));
+    }
+    
     (function () {
         const token = `token = ${newToken};\n\nmodule.exports = { token };`
         const filePath = path.join(__dirname, 'key', 'token.js');
@@ -71,7 +75,7 @@ async function webScrapingData(nome,senha) {
     })();
 
 
-    
+
     
     await browser.close();
     let numGitDict = {
