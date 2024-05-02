@@ -1,5 +1,5 @@
 const { main } = require("./checkFollower");
-const { token } = require('./key/token');
+const { token } = require('./utility/key/token');
 const axios = require('axios');
 
 async function unfollow(username) {
