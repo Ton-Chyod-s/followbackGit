@@ -5,7 +5,7 @@ const { email, senha } = require('../key/usuario');
 
 async function webScrapingData(nome,senha) {
     const browser = await puppeteer.launch({
-        headless: false,
+        // headless: false,
     });
     const page = await browser.newPage();
     await page.goto("https://github.com/settings/tokens");
@@ -22,6 +22,8 @@ async function webScrapingData(nome,senha) {
     const elementHandle = await page.$('[data-target="sudo-credential-options.githubMobileChallengeValue"]');
     // Extrair o texto do elemento usando page.evaluate()
     const numGit = await page.evaluate(element => element.textContent, elementHandle);
+    console.log(`Digite o numero: ${numGit.trim()}`);
+
     // genereta token
     await page.waitForSelector('[class="btn btn-sm select-menu-button"]');
     await page.locator('[class="btn btn-sm select-menu-button"]').click();
@@ -65,7 +67,7 @@ async function webScrapingData(nome,senha) {
     if (!fs.existsSync(path.join(__dirname, 'key'))) {
         fs.mkdirSync(path.join(__dirname, 'key'));
     }
-    
+
     // write token in file
     (function () {
         const token = `token = ${newToken};\n\nmodule.exports = { token };`
@@ -79,16 +81,12 @@ async function webScrapingData(nome,senha) {
 
     
     await browser.close();
-    let numGitDict = {
-        'numero git': numGit.trim()
-    };
-    return numGitDict;
+    return 
 }
 
 // Código de exemplo para testar a função follow
 if (require.main === module) {
     (async () => {
         const result = await webScrapingData(email, senha);
-        console.log(result);
     })();
 }
