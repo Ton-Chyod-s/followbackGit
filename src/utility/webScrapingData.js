@@ -52,7 +52,7 @@ async function webScrapingData(nome,senha) {
         });
     });
 
-    const elementHandleToken = await page.locator('[id="new-oauth-token"]');
+    const elementHandleToken = await page.locator('code');
     const tokengit = await page.evaluate(element => element.textContent, elementHandleToken);
     console.log(tokengit);
 
