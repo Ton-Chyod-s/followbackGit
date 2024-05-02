@@ -85,7 +85,7 @@ async function webScrapingData(nome,senha) {
             if (err) return console.log(err);
         });
     })();
-    'gj'
+    
     await browser.close();
     return 
 }
