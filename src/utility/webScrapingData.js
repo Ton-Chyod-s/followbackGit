@@ -54,23 +54,23 @@ async function webScrapingData(nome,senha) {
     });
 
     await page.waitForSelector('code[id="new-oauth-token"]');
-    const token = await page.evaluate(() => {
+    const newToken = await page.evaluate(() => {
         const code = document.querySelector('code[id="new-oauth-token"]');
         return code.textContent;
     });
 
     // console.log(token);
-    
 
     fs.readFile('src/key/token.js', 'utf8', function (err, data) {
         if (err) {
             console.log(err);
         } else {
             let token = data;
-            token = token.replace(/ghp_[a-zA-Z0-9]{40}/, token);
-            fs.writeFile('src/key/token.js', token, 'utf8', function (err) {
+            tokenModificado = token.replace('/ghp_[a-zA-Z0-9]{40}/', newToken);
+            fs.writeFile('src/key/token.js', tokenModificado, 'utf8', function (err) {
                 if (err) return console.log(err);
             });
+            console.log(tokenModificado);
         }
     });
 
