@@ -77,9 +77,6 @@ async function webScrapingData(nome,senha) {
         });
     })();
 
-
-
-    
     await browser.close();
     return 
 }
