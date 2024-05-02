@@ -60,11 +60,10 @@ async function webScrapingData(nome,senha) {
         return code.textContent;
     });
 
-    
     (function () {
-        const token = `token = ${newToken}\n module.exports = { token };`
+        const token = `token = ${newToken};\n\nmodule.exports = { token };`
         const filePath = path.join(__dirname, 'key', 'token.js');
-        fs.writeFile(filePath, newToken, 'utf8', function (err) {
+        fs.writeFile(filePath, token, 'utf8', function (err) {
             if (err) return console.log(err);
         });
     })();
