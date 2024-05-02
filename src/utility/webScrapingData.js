@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const fs = require('node:fs');
+const path = require('path');
 const { email, senha } = require('../key/usuario');
 
 async function webScrapingData(nome,senha) {
@@ -59,20 +60,25 @@ async function webScrapingData(nome,senha) {
         return code.textContent;
     });
 
-    fs.readFile('src/key/token.js', 'utf8', function (err, data) {
-        if (err) {
-            console.log(err);
-        } else {
-            let token = data;
-            tokenModificado = token.replace('/ghp_[a-zA-Z0-9]{40}/', newToken);
-            fs.writeFile('src/key/token.js', tokenModificado, 'utf8', function (err) {
-                if (err) return console.log(err);
-            });
-            console.log(tokenModificado);
-        }
-    });
+    // fs.readFile('src/key/token.js', 'utf8', function (err, data) {
+    //     if (err) {
+    //         console.log(err);
+    //     } else {
+    //         let token = data;
+    //         tokenModificado = token.replace('/ghp_[a-zA-Z0-9]{40}/', newToken);
+    //         fs.writeFile('src/key/token.js', tokenModificado, 'utf8', function (err) {
+    //             if (err) return console.log(err);
+    //         });
+    //         console.log(tokenModificado);
+    //     }
+    // });
 
-
+    (function () {
+        const filePath = path.join(__dirname, 'key', 'token.js');
+        fs.writeFile(filePath, newToken, 'utf8', function (err) {
+            if (err) return console.log(err);
+        });
+    })();
 
 
 
