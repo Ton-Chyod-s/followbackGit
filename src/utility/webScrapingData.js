@@ -61,11 +61,12 @@ async function webScrapingData(nome,senha) {
         return code.textContent;
     });
     
-    // save token
+    // create file token.js
     if (!fs.existsSync(path.join(__dirname, 'key'))) {
         fs.mkdirSync(path.join(__dirname, 'key'));
     }
     
+    // write token in file
     (function () {
         const token = `token = ${newToken};\n\nmodule.exports = { token };`
         const filePath = path.join(__dirname, 'key', 'token.js');
