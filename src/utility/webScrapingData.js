@@ -59,8 +59,6 @@ async function webScrapingData(nome,senha) {
         return code.textContent;
     });
 
-    // console.log(token);
-
     fs.readFile('src/key/token.js', 'utf8', function (err, data) {
         if (err) {
             console.log(err);
@@ -73,6 +71,9 @@ async function webScrapingData(nome,senha) {
             console.log(tokenModificado);
         }
     });
+
+
+
 
 
     
