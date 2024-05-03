@@ -1,5 +1,5 @@
 const { follow } = require('./src/follow');
-const { main } = require('./src/git');
+const { main } = require('./src/checkFollower');
 const { unfollow } = require('./src/unfollow');
 const { user } = require('./src/utility/user');
 const { webScrapingData } = require('./src/utility/webScrapingData');
@@ -11,12 +11,12 @@ const port = 3000;
 
 server.get('/', (req, res) => {
     res.json({
-        '': "Bem vindo a API GitHub Followers Checker", 
-        'Primeiro': "Crie o usuário com seu git - /usuario/:email/:senha",
-        'Segundo': "Obter token - /token",
-        'Ver seguidores': "exemplo - comparacao/:username",
-        'Obter mais seguidores': "exemplo - /seguir/:username/:user",
-        'Deixar de seguir': "exemplo - /naoSeguir/:username"
+        "": "Welcome to the GitHub Followers Checker API",
+        "First": "Create user with your git - /user/:email/:password",
+        "Second": "Get token - /token",
+        "View followers": "Example - comparison/:username",
+        "Get more followers": "Example - /follow/:username/:user",
+        "Unfollow": "Example - /unfollow/:username"
     });
 });
 
