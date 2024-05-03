@@ -2,6 +2,7 @@ const { follow } = require('./src/follow');
 const { main } = require('./src/git');
 const { unfollow } = require('./src/unfollow');
 const { user } = require('./src/utility/user');
+const { webScrapingData } = require('./src/utility/webScrapingData');
 
 const express = require('express');
 
@@ -39,6 +40,12 @@ server.get('/seguir/:username/:user', async (req, res) => {
 server.get('/usuario/:email/:senha', async (req, res) => {
     const { email, senha } = req.params;
     const result = await user(email, senha);
+    res.json(result);
+});
+
+server.get('/token/:email/:senha', async (req, res) => {
+    const { email, senha } = req.params;
+    const result = await webScrapingData(email, senha);
     res.json(result);
 });
 

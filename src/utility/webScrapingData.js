@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('path');
 const { email, senha } = require('./key/usuario');
 
-async function webScrapingData(nome,senha) {
+async function webScrapingData() {
     const browser = await puppeteer.launch({
         headless: false,
     });
@@ -11,7 +11,7 @@ async function webScrapingData(nome,senha) {
     await page.goto("https://github.com/settings/tokens");
     
     // Preencher um campo
-    await page.type('[id="login_field"]', nome);
+    await page.type('[id="login_field"]', email);
     // Preencher um campo
     await page.type('[id="password"]', senha);
     // clicar
@@ -84,6 +84,6 @@ async function webScrapingData(nome,senha) {
 // Código de exemplo para testar a função follow
 if (require.main === module) {
     (async () => {
-        const result = await webScrapingData(email, senha);
+        const result = await webScrapingData();
     })();
 }
