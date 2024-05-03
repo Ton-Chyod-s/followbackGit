@@ -84,7 +84,7 @@ Sinta-se à vontade para contribuir abrindo issues ou pull requests.
 ### GitHub Followers Checker
 <br>
 <div style="display: inline_block">
-<a href="https://www.youtube.com/">
+<a href="https://www.youtube.com/channel/UCHDBZCeFCxx38ani5s857Tw">
 <img height=110 src="https://images.tcdn.com.br/img/img_prod/1076751/teste_2_591_1_db9b616c9397e918b1d43802d3dea23b.jpg"/>
 </a>
 </div>
