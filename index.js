@@ -16,7 +16,6 @@ server.get('/', (req, res) => {
         "First": "Create user with your git - /usuario/:email/:password",
         "Second": "Get token - /token",
         "View followers": "Example - comparacaoSeguindo/:username",
-        "View follow": "Example - comparacaoSeguidores/:username",
         "Get more followers": "Example - /seguir/:username/:user",
         "Unfollow": "Example - /naoSeguir/:username",
     });
@@ -25,12 +24,6 @@ server.get('/', (req, res) => {
 server.get('/comparacaoSeguindo/:username', async (req, res) => {
     const { username } = req.params;
     const result = await main(username);
-    res.json(result);
-});
-
-server.get('/comparacaoSeguidores/:username', async (req, res) => {
-    const { username } = req.params;
-    const result = await checkFollow(username);
     res.json(result);
 });
 
