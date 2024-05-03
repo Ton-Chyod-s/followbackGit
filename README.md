@@ -4,28 +4,28 @@ Este script em Node.js verifica se seus seguidores no GitHub estão seguindo voc
 
 ## Como Usar
 1. Clone este repositório.
-1. Altere a pasta **key#** para **key**
-2. Altere o arquivo token com sua token registrada no link:
-   ```bash
-   https://github.com/settings/tokens
-   
-* Generate a personal access token
-* Nome token: 
-    * Note
-    * Expiration: No expiration
-    * Select scopes:
-      * repo full
-      * user full
-      * admin:ssh_signing_key full
-      * Finish generete token
-
 2. Instale o Node.js, se ainda não o fez.
+    ```bash
+    https://nodejs.org/en
+
+    npm install
+1. execute
+    ```bash
+    node user.js
+        > altere key/usuario.js
+        > email = 'login git';
+        > senha = 'senha git';
+1. execute
+    ```bash
+    node webScrapingData.js
+    em seu celular 
+    Digite o número: ...
+
 3. Execute os seguintes comandos no seu terminal:
 
     ```bash
-    npm install
     node src/checkFollower.js
-
+    para verificar quem não esta te seguindo de volta
 ## Exemplo de Saída
     
     {
