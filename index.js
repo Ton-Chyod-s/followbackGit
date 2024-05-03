@@ -43,7 +43,7 @@ server.get('/usuario/:email/:senha', async (req, res) => {
     res.json(result);
 });
 
-server.get('/token/:email/:senha', async (req, res) => {
+server.get('/token', async (req, res) => {
     const { email, senha } = req.params;
     const result = await webScrapingData(email, senha);
     res.json(result);
