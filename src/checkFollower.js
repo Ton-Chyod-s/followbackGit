@@ -35,7 +35,6 @@ async function main(username,ehVerdadeiro = false) {
     } else {
         return naoSeguidor;
     }
-    
 }
 
 module.exports = { main };
