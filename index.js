@@ -21,11 +21,18 @@ server.get('/', (req, res) => {
     });
 });
 
-server.get('/comparacao/:username', async (req, res) => {
+server.get('/comparacaoSeguindo/:username', async (req, res) => {
     const { username } = req.params;
     const result = await main(username);
     res.json(result);
 });
+
+server.get('/comparacaoSeguidores/:username', async (req, res) => {
+    const { username } = req.params;
+    const result = await checkFollow(username);
+    res.json(result);
+});
+
 
 server.get('/naoSeguir/:username', async (req, res) => {
     const { username } = req.params;
