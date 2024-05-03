@@ -18,8 +18,8 @@ Este script em Node.js verifica se seus seguidores no GitHub estão seguindo voc
 1. execute
     ```bash
     node webScrapingData.js
-    em seu celular 
-    Digite o número: ...
+        > em seu celular 
+        > Digite o número: ...
 
 3. Execute os seguintes comandos no seu terminal:
 
@@ -28,7 +28,7 @@ Este script em Node.js verifica se seus seguidores no GitHub estão seguindo voc
     para verificar quem não esta te seguindo de volta
 
     node src/follow.js
-    para clonar seguidores de outros usuario
+    para clonar seguidores de outros usuarios
 
     node src/unfollow.js
     para deixar se seguir quem não te segue
