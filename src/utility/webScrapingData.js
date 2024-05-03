@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('node:fs');
 const path = require('path');
-const { email, senha } = require('../key/usuario');
+const { email, senha } = require('./key/usuario');
 
 async function webScrapingData(nome,senha) {
     const browser = await puppeteer.launch({
@@ -72,15 +72,6 @@ async function webScrapingData(nome,senha) {
     (function () {
         const token = `token = "${newToken}";\n\nmodule.exports = { token };`
         const filePath = path.join(__dirname, 'key', 'token.js');
-        fs.writeFile(filePath, token, 'utf8', function (err) {
-            if (err) return console.log(err);
-        });
-    })();
-
-    // write usuario in file
-    (function () {
-        const token = `email = '';\nsenha = '';\n\nmodule.exports = { email, senha };`
-        const filePath = path.join(__dirname, 'key', 'usuario.js');
         fs.writeFile(filePath, token, 'utf8', function (err) {
             if (err) return console.log(err);
         });
