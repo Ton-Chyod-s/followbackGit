@@ -11,6 +11,7 @@ Na recente atualização, foi introduzida uma função que permite aos usuários
     https://nodejs.org/en
 
     npm install
+    npm install fs, express, nodemon, axios
 1. execute
     ```bash
     node user.js
@@ -55,7 +56,7 @@ Na recente atualização, foi introduzida uma função que permite aos usuários
 
     ```bash
     npm install
-    npm install express, nodemon
+    npm install fs, express, nodemon, axios
     nodemon index.js
 4. Acesse um navegador com seguinte endereço
    
