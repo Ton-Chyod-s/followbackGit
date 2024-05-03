@@ -1,4 +1,5 @@
 const { follow } = require('./src/follow');
+const { checkFollow } = require('./src/checkFollow');
 const { main } = require('./src/checkFollower');
 const { unfollow } = require('./src/unfollow');
 const { user } = require('./src/utility/user');
