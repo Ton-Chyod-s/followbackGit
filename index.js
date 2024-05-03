@@ -13,11 +13,12 @@ const port = 3000;
 server.get('/', (req, res) => {
     res.json({
         "": "Welcome to the GitHub Followers Checker API",
-        "First": "Create user with your git - /user/:email/:password",
+        "First": "Create user with your git - /usuario/:email/:password",
         "Second": "Get token - /token",
-        "View followers": "Example - comparison/:username",
-        "Get more followers": "Example - /follow/:username/:user",
-        "Unfollow": "Example - /unfollow/:username"
+        "View followers": "Example - comparacaoSeguindo/:username",
+        "View follow": "Example - comparacaoSeguidores/:username",
+        "Get more followers": "Example - /seguir/:username/:user",
+        "Unfollow": "Example - /naoSeguir/:username",
     });
 });
 
@@ -32,7 +33,6 @@ server.get('/comparacaoSeguidores/:username', async (req, res) => {
     const result = await checkFollow(username);
     res.json(result);
 });
-
 
 server.get('/naoSeguir/:username', async (req, res) => {
     const { username } = req.params;
