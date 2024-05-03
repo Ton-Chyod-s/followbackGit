@@ -1,7 +1,7 @@
 const { funcSeguidores } = require('./utility/followers');
 const { funcSeguir } = require('./utility/follow');
 
-async function main(username) {
+async function main(username,ehVerdadeiro = false) {
     const seguidores = await funcSeguidores(username);
     const seguindo = await funcSeguir(username);
 
@@ -30,7 +30,12 @@ async function main(username) {
             naoSeguidor["erro"] = "No followers found!";
         }
     }
-    return naoSeguidor;
+    if (ehVerdadeiro) {
+        return seguidorMutuo;
+    } else {
+        return naoSeguidor;
+    }
+    
 }
 
 module.exports = { main };

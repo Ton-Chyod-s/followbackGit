@@ -15,15 +15,16 @@ server.get('/', (req, res) => {
         "": "Welcome to the GitHub Followers Checker API",
         "First": "Create user with your git - /usuario/:email/:password",
         "Second": "Get token - /token",
-        "View followers": "Example - comparacaoSeguindo/:username",
+        "View followers": "Example - comparacaoSeguindo/:username/:True or False",
         "Get more followers": "Example - /seguir/:username/:user",
         "Unfollow": "Example - /naoSeguir/:username",
     });
 });
 
-server.get('/comparacaoSeguindo/:username', async (req, res) => {
+server.get('/comparacaoSeguindo/:username/:user', async (req, res) => {
     const { username } = req.params;
-    const result = await main(username);
+    const { user } = req.params;
+    const result = await main(username, user);
     res.json(result);
 });
 
