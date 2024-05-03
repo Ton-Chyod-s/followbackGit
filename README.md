@@ -2,6 +2,8 @@
 
 Este script em Node.js verifica se seus seguidores no GitHub estão seguindo você de volta. Ele busca a lista de seguidores e seguidos para um determinado nome de usuário do GitHub e identifica seguidores mútuos e não seguidores.
 
+Na recente atualização, foi introduzida uma função que permite aos usuários clonarem os seguidores de outros perfis, além de possibilitar deixar de seguir aqueles que não os seguem de volta.
+
 ## Como Usar
 1. Clone este repositório.
 2. Instale o Node.js, se ainda não o fez.
@@ -64,7 +66,14 @@ Substitua <usuário_a_ser_pesquisado> pelo nome de usuário do GitHub que você 
 
 #### Exemplo de Saída
     
-    {"seguidor 0": "usuário1","seguidor 1": "usuário2","erro": "Todos os seguidores estão seguindo de volta!"}
+    {
+        "": "Welcome to the GitHub Followers Checker API",
+        "First": "Create user with your git - /usuario/:email/:password",
+        "Second": "Get token - /token",
+        "View followers": "Example - comparacaoSeguindo/:username",
+        "Get more followers": "Example - /seguir/:username/:user",
+        "Unfollow": "Example - /naoSeguir/:username",
+    }
 
 ## Contribuição
 
