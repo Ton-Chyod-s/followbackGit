@@ -11,7 +11,9 @@ const port = 3000;
 
 server.get('/', (req, res) => {
     res.json({
-        '': "Bem vindo a API GitHub Followers Checker",
+        '': "Bem vindo a API GitHub Followers Checker", 
+        'Primeiro': "Crie o usuário com seu git - /usuario/:email/:senha",
+        'Segundo': "Obter token - /token",
         'Ver seguidores': "exemplo - comparacao/:username",
         'Obter mais seguidores': "exemplo - /seguir/:username/:user",
         'Deixar de seguir': "exemplo - /naoSeguir/:username"
