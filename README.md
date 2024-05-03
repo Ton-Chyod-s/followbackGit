@@ -26,6 +26,12 @@ Este script em Node.js verifica se seus seguidores no GitHub estão seguindo voc
     ```bash
     node src/checkFollower.js
     para verificar quem não esta te seguindo de volta
+
+    node src/follow.js
+    para clonar seguidores de outras pessoas
+
+    node src/unfollow.js
+    para deixar se seguir quem não te segue
 ## Exemplo de Saída
     
     {
