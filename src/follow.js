@@ -43,7 +43,7 @@ module.exports = { follow };
 // Código de exemplo para testar a função follow
 if (require.main === module) {
     (async () => {
-        const result = await follow("Dunossauro","silvniv");
+        const result = await follow("programadorlhama","ton-chyod-s");
         console.log(result);
     })();
 }

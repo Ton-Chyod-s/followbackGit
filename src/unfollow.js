@@ -27,7 +27,7 @@ async function unfollow(username) {
 
 if (require.main === module) {
     (async () => {
-        const result = await unfollow("silvniv");
+        const result = await unfollow("ton-chyod-s");
         console.log(result);
     })();
 }

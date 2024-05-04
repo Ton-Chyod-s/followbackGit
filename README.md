@@ -14,13 +14,13 @@ Na recente atualização, foi introduzida uma função que permite aos usuários
     npm install fs, express, nodemon, axios
 1. execute
     ```bash
-    node user.js
+    node ./src/utility/user.js
         > altere key/usuario.js
         > email = 'login git';
         > senha = 'senha git';
 1. execute
     ```bash
-    node webScrapingData.js
+    node ./src/utility/webScrapingData.js
         > em seu celular 
         > Digite o número: ...
 
