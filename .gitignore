@@ -4994,3 +4994,5 @@ node_modules/zod/README.md
 src/key/usuario.js
 src/utility/key/token.js
 src/utility/key/usuario.js
+
+.vercel
