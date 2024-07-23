@@ -14,15 +14,15 @@ require('dotenv').config({
 
 const nome = process.env.USER;
 const senha = process.env.PASSWORD;
-const token = process.env.TOKEN;
+const token = process.env.KEY;
 
 async function funcSeguidores(username) {
     const seguidores = [];
     while (true) { 
         const respostaSeguidores = await fetch(`https://api.github.com/users/${username}/followers?page=${page}&per_page=${perPage}`, {
-            // headers: {
-            //     'Authorization': `token ${token}`
-            // }
+            headers: {
+                'Authorization': `token ${token}`
+            }
         });
         if (!respostaSeguidores.ok) {
             const erro = await respostaSeguidores.json();
