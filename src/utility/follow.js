@@ -1,5 +1,19 @@
 const { page, perPage } = require('./qtdePG');
 const { token } = require('./key/token');
+// se for true, o teste será feito, se for false, entrera em produção
+const on =  false;
+
+let arg = ".env";
+if ( on === true ) {
+    arg = ".env.testing"
+}
+
+require('dotenv').config({  
+    path: process.env.NODE_ENV !== "main" ? arg : ".env"
+  })
+
+const nome = process.env.USER;
+const senha = process.env.PASSWORD;
 
 async function funcSeguir(username) {
     const seguindo = [];
@@ -30,7 +44,7 @@ module.exports = { funcSeguir };
 // Código de exemplo para testar a função follow
 if (require.main === module) {
     (async () => {
-        const result = await funcSeguir("Ton-Chyod-s");
+        const result = await funcSeguir(nome);
         console.log(result);
     })();
 }

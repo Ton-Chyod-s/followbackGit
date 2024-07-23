@@ -1,7 +1,20 @@
 const puppeteer = require('puppeteer');
 const fs = require('node:fs');
 const path = require('path');
-const { email, senha } = require('./key/usuario');
+// se for true, o teste será feito, se for false, entrera em produção
+const on =  false;
+
+let arg = ".env";
+if ( on === true ) {
+    arg = ".env.testing"
+}
+
+require('dotenv').config({  
+    path: process.env.NODE_ENV !== "main" ? arg : ".env"
+  })
+
+const nome = process.env.USER;
+const senha = process.env.PASSWORD;
 
 async function webScrapingData() {
     const browser = await puppeteer.launch({
@@ -11,7 +24,7 @@ async function webScrapingData() {
     await page.goto("https://github.com/settings/tokens");
     
     // Preencher um campo
-    await page.type('[id="login_field"]', email);
+    await page.type('[id="login_field"]', nome);
     // Preencher um campo
     await page.type('[id="password"]', senha);
     // clicar
