@@ -1,5 +1,5 @@
 const { page, perPage } = require('./qtdePG');
-const { token } = require('./key/token');
+
 // se for true, o teste será feito, se for false, entrera em produção
 const on =  false;
 
@@ -14,6 +14,7 @@ require('dotenv').config({
 
 const nome = process.env.USER;
 const senha = process.env.PASSWORD;
+const token = process.env.TOKEN;
 
 async function funcSeguir(username) {
     const seguindo = [];
