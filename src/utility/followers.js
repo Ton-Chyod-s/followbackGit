@@ -20,9 +20,9 @@ async function funcSeguidores(username) {
     const seguidores = [];
     while (true) { 
         const respostaSeguidores = await fetch(`https://api.github.com/users/${username}/followers?page=${page}&per_page=${perPage}`, {
-            headers: {
-                'Authorization': `token ${token}`
-            }
+            // headers: {
+            //     'Authorization': `token ${token}`
+            // }
         });
         if (!respostaSeguidores.ok) {
             const erro = await respostaSeguidores.json();

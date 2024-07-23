@@ -20,9 +20,9 @@ async function funcSeguir(username) {
     const seguindo = [];
     while (true) {   
             const respostaSeguindo = await fetch(`https://api.github.com/users/${username}/following?page=${page}&per_page=${perPage}`, {
-        headers: {
-            'Authorization': `token ${token}`
-            }
+        // headers: {
+        //     'Authorization': `token ${token}`
+        //     }
         });
         if (!respostaSeguindo.ok) {
             const erro = await respostaSeguindo.json();
