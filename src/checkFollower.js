@@ -1,5 +1,6 @@
 const { funcSeguidores } = require('./utility/followers');
 const { funcSeguir } = require('./utility/follow');
+const { nome } = require('../utility/processDotenv');
 
 async function main(username,ehVerdadeiro = false) {
     const seguidores = await funcSeguidores(username);
@@ -41,7 +42,7 @@ module.exports = { main };
 
 if (require.main === module) {
     (async () => {
-        const result = await main("ton-chyod-s");
+        const result = await main(nome);
         console.log(result);
     })();
 }

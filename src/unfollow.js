@@ -1,5 +1,5 @@
 const { main } = require("./checkFollower");
-const { token } = require('./utility/key/token');
+const { token, nome } = require('../utility/processDotenv');
 const axios = require('axios');
 
 async function unfollow(username) {
@@ -27,7 +27,7 @@ async function unfollow(username) {
 
 if (require.main === module) {
     (async () => {
-        const result = await unfollow("ton-chyod-s");
+        const result = await unfollow(nome);
         console.log(result);
     })();
 }

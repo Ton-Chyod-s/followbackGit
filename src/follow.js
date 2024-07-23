@@ -1,4 +1,4 @@
-const { token } = require('./utility/key/token');
+const { token, nome } = require('../utility/processDotenv');
 const { funcSeguidores } = require('./utility/followers');
 const { funcSeguir } = require('./utility/follow');
 
@@ -43,7 +43,7 @@ module.exports = { follow };
 // Código de exemplo para testar a função follow
 if (require.main === module) {
     (async () => {
-        const result = await follow("cristianoAbudu","ton-chyod-s");
+        const result = await follow("cristianoAbudu", nome);
         console.log(result);
     })();
 }
