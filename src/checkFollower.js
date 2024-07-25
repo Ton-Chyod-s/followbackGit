@@ -1,6 +1,6 @@
 const { funcSeguidores } = require('./utility/followers');
 const { funcSeguir } = require('./utility/follow');
-const { nome } = require('../utility/processDotenv');
+const { nome } = require('./utility/processDotenv');
 
 async function main(username,ehVerdadeiro = false) {
     const seguidores = await funcSeguidores(username);
