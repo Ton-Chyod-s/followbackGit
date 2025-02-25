@@ -1,12 +1,12 @@
+import express, { Application } from 'express';
+import { RegisterRoutes } from './controllers/RegisterRoutes';
 
-import express, { Request, Response } from 'express';
-
-const server = express();
+const server: Application  = express();
 const port = 3000;
 
-server.get('/', (req: Request, res: Response) => {
-    res.json({'message': 'Hello World!'});
-});
+server.use(express.json());
+
+RegisterRoutes(server);
 
 server.listen(port, () => {
     console.log(`Server running on port ${port}`);
