@@ -33,7 +33,7 @@ export async function CheckFollowerWithFollowing(userName: string): Promise<stri
     });
 
     if (userUnfollowed.length === 0) 
-        return ['No user unfollowed'];
+        return ['No user has unfollowed you'];
 
     return userUnfollowed;
 }
