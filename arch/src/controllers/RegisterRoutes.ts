@@ -1,5 +1,5 @@
 import { Application  } from 'express';
-import { routers } from './Routes/v1';
+import { routers } from './routes/apiRoutes';
 
 export function RegisterRoutes(server: Application ) {
     server.use('/', routers);
