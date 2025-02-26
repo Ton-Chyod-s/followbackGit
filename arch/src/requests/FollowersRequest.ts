@@ -1,16 +1,24 @@
-import { FollowersData } from "../request/interfaces/FollowersData";
+import { FollowersData } from "../models/request/IFollowersRequest";
+
+require('dotenv').config({  
+    path: process.env.NODE_ENV !== "main" ? ".env.testing" : ".env"
+  })
 
 async function GetFollowersData(username: string, page: number): Promise<FollowersData[] | null> {
     try {
-        const response = await fetch(`https://api.github.com/users/${username}/followers?page=${page}&per_page=100`);
+        const response = await fetch(`https://api.github.com/users/${username}/followers?page=${page}&per_page=100`, {
+            headers: {
+                Authorization: process.env.KEY || "",
+            },
+        });
+
         if (!response.ok) {
             throw new Error(`Erro: ${response.status} - ${response.statusText}`);
         }
         const data = await response.json();
 
         const followers: FollowersData[] = data.map((user: any) => ({
-            login: user.login,
-            html_url: user.html_url,
+            Name: user.login,
         }));
 
         return followers;

@@ -1,6 +1,6 @@
 interface GitHubUser {
-    followers: number;
-    following: number;
+    Followers: number;
+    Following: number;
 }
 
 export type { GitHubUser };

@@ -1,6 +1,5 @@
 interface FollowersData{
-    login: string;
-    html_url: string;
+    Name: string;
 }
 
 export type { FollowersData };
