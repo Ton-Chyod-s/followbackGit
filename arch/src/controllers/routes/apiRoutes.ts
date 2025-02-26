@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express';
 import { GetFollowersData } from '../../requests/FollowersRequest';
 import { getUserData } from '../../requests/UserRequest';
 import { GetFollowingData } from '../../requests/FollowingRequest';
+import { CheckFollowerWithFollowing } from '../../services/useCases/checkFollowerAndFollowing/CheckFollowerWithFollowingUseCase';
 
 const routers = Router();
 
@@ -27,6 +28,13 @@ routers.get('/following', async (req: Request, res: Response) => {
     const page = Number(req.query.page) || 1;
 
     res.json(await GetFollowingData(name, page));
+});
+
+routers.get('/check', async (req: Request, res: Response) => {
+    const name = req.query.name as string;
+    const page = Number(req.query.page) || 1;
+
+    res.json(await CheckFollowerWithFollowing(name));
 });
 
 export { routers };
