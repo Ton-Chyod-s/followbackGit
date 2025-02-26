@@ -2,40 +2,38 @@ import { GetFollowingData } from "../../../requests/FollowingRequest";
 import { GetFollowersData } from "../../../requests/FollowersRequest";
 import { getUserData } from "../../../requests/UserRequest";
 
-export async function CheckFollowerWithFollowing(userName: string) {
+export async function CheckFollowerWithFollowing(userName: string): Promise<string[] | null> {
     const FOLLOWERS_PER_PAGE = 100;
-    let listFollowers = new Array();
-    let listfollowing = new Array();
-    let userUnfollowed = new Array();
+    const listFollowers = new Set<string>();
+    const listFollowing: string[] = [];
+    const userUnfollowed: string[] = [];
 
     const userData = await getUserData(userName);
-
-    if (!userData) {
+    if (!userData) 
         return null;
-    }
 
-    const totalFollowers = userData?.Followers ?? 0;
+    const totalFollowers = userData.Followers ?? 0;
     const followersPageCount = Math.ceil(totalFollowers / FOLLOWERS_PER_PAGE);
 
-    if (Number.isFinite(followersPageCount) && followersPageCount > 0){
-        for (let i = 0; i < followersPageCount; i++) {
-            const followerList = await GetFollowersData(userName, i + 1);
-            if (followerList) {
-                followerList.forEach((follower) => listFollowers.push(follower.Name));
-            }
+    if (!Number.isFinite(followersPageCount) || followersPageCount <= 0) return [];
 
-            const followingList = await GetFollowingData(userName, i + 1);
-            if (followingList) {
-                followingList.forEach((following) => listfollowing.push(following.Name));
-            }
-        }
-    
-    for (let i = 0; i < listfollowing.length; i++) {
-        if (!listFollowers.includes(listfollowing[i])) {
-            userUnfollowed.push(listfollowing[i]);
-        }
+    for (let i = 0; i < followersPageCount; i++) {
+        const [followerList, followingList] = await Promise.all([
+            GetFollowersData(userName, i + 1),
+            GetFollowingData(userName, i + 1)
+        ]);
+
+        followerList?.forEach(follower => listFollowers.add(follower.Name));
+        followingList?.forEach(following => listFollowing.push(following.Name));
     }
+
+    listFollowing.forEach(user => {
+        if (!listFollowers.has(user))
+            userUnfollowed.push(user);
+    });
+
+    if (userUnfollowed.length === 0) 
+        return ['No user unfollowed'];
 
     return userUnfollowed;
-    }
 }
