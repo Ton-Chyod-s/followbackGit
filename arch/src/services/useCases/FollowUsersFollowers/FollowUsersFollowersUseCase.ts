@@ -62,4 +62,3 @@ async function GetUserFollowers(userName: string): Promise<Set<string> | null> {
     
     return listFollowers;
 }
-
