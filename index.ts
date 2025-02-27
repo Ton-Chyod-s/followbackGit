@@ -1,5 +1,5 @@
 import express, { Application } from 'express';
-import { RegisterRoutes } from './controllers/RegisterRoutes';
+import { RegisterRoutes } from './src/controllers/RegisterRoutes';
 
 const server: Application  = express();
 const port = 3000;
