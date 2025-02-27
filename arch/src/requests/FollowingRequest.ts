@@ -1,8 +1,6 @@
 import { FollowingData } from "../models/request/IFollowingRequest";
 
-require('dotenv').config({  
-    path: process.env.NODE_ENV !== "main" ? ".env.testing" : ".env"
-  })
+require('dotenv').config({ path: ".env" });
 
 async function GetFollowingData(username: string, page: number): Promise<FollowingData[] | null> {
     try {

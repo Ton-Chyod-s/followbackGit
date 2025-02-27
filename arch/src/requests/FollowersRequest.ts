@@ -1,8 +1,6 @@
 import { FollowersData } from "../models/request/IFollowersRequest";
 
-require('dotenv').config({  
-    path: process.env.NODE_ENV !== "main" ? ".env.testing" : ".env"
-  })
+require('dotenv').config({ path: ".env" });
 
 async function GetFollowersData(username: string, page: number): Promise<FollowersData[] | null> {
     try {
