@@ -22,6 +22,9 @@ async function followedUsers(followed: Set<string>): Promise<(string | null)[]> 
     const followResults = await Promise.allSettled(
         [...followed].map(async (follower) => {
             try {
+                const randomDelay = Math.floor(Math.random() * 2000) + 1000;
+                await new Promise(resolve => setTimeout(resolve, randomDelay));
+
                 const response = await newFollower(follower);
                 if (!response) throw new Error(`Falha ao seguir ${follower}`);
                 return follower;
