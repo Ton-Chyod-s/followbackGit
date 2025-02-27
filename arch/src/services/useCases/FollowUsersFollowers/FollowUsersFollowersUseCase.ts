@@ -1,18 +1,44 @@
 import { GetFollowersData } from "../../../requests/FollowersRequest";
+import { newFollower } from "../../../requests/FollowRequest";
 import { getUserData } from "../../../requests/UserRequest";
 
 require('dotenv').config({ path: ".env" });
 
-export async function FollowUsersFollowers(userName: string): Promise<string[] | null> {
+export async function FollowUsersFollowers(userName: string): Promise<number | null> {
     const user = process.env.USER ?? '';
     
     const getFollowersINotFollow = await GetUnreciprocatedFollows(userName, user);
     if (!getFollowersINotFollow)
         return null;
 
-    return null;
+    const followResults = await followedUsers(getFollowersINotFollow);
+
+    const followedCount = followResults.filter(result => result !== null).length;
+
+    return followedCount > 0 ? followedCount : null;
 }
 
+async function followedUsers(followed: Set<string>): Promise<(string | null)[]> {
+    const followResults = await Promise.allSettled(
+        [...followed].map(async (follower) => {
+            try {
+                const response = await newFollower(follower);
+                if (!response) throw new Error(`Falha ao seguir ${follower}`);
+                return follower;
+            } catch (error) {
+                console.error(`Erro ao seguir ${follower}:`, error);
+                return null;
+            }
+        })
+    );
+
+    const followedUsers = followResults
+    .filter(result => result.status === "fulfilled" && result.value !== null)
+    .map(result => (result as PromiseFulfilledResult<string>).value);
+
+    return followedUsers;
+  
+}
 
 async function GetUnreciprocatedFollows(userName: string, user: string): Promise<Set<string> | null> {
     const notFollowingBack = new Set<string>();
