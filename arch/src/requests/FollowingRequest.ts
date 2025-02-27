@@ -6,7 +6,7 @@ async function GetFollowingData(username: string, page: number): Promise<Followi
     try {
         const response = await fetch(`https://api.github.com/users/${username}/following?page=${page}&per_page=100`, {
             headers: {
-                Authorization: process.env.KEY || "",
+                Authorization: `Bearer ${process.env.KEY || ""}`,
             },
         });
 
