@@ -2,6 +2,7 @@ import { Router, Request, Response } from 'express';
 import { CheckFollowerWithFollowing } from '../../services/useCases/checkFollowerAndFollowing/CheckFollowerWithFollowingUseCase';
 import { FollowUsersFollowers } from '../../services/useCases/followUsersFollowers/FollowUsersFollowersUseCase';
 import { newFollower } from '../../requests/FollowRequest';
+import { checkUnfollowAndFollow } from '../../services/useCases/checkUnfollowAndFollow/checkUnfollowAndFollowUseCase';
 
 const routers = Router();
 
@@ -19,6 +20,12 @@ routers.get('/follow-users', async (req: Request, res: Response) => {
     const name = req.query.name as string;
 
     res.json(await FollowUsersFollowers(name));
+});
+
+routers.get('/check-unfollower', async (req: Request, res: Response) => {
+    const name = req.query.name as string;
+
+    res.json(await checkUnfollowAndFollow(name));
 });
 
 routers.put('/new-follower/:name', async (req: Request, res: Response): Promise<void> => {
