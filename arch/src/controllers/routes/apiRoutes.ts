@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { CheckFollowerWithFollowing } from '../../services/useCases/checkFollowerAndFollowing/CheckFollowerWithFollowingUseCase';
-import { FollowUsersFollowers } from '../../services/useCases/FollowUsersFollowers/FollowUsersFollowersUseCase';
+import { FollowUsersFollowers } from '../../services/useCases/followUsersFollowers/FollowUsersFollowersUseCase';
 import { newFollower } from '../../requests/FollowRequest';
 
 const routers = Router();
