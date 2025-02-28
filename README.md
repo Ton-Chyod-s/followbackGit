@@ -1,8 +1,8 @@
-# GitHub Followers Checker
+# GitHub Follower Manager
 
-Este script em Node.js verifica se seus seguidores no GitHub estão seguindo você de volta. Ele busca a lista de seguidores e seguidos para um determinado nome de usuário do GitHub e identifica seguidores mútuos e não seguidores.
+Este script em TypeScript verifica se seus seguidores no GitHub estão seguindo você de volta. Ele utiliza a API do GitHub para obter a lista de seguidores e seguidos de um determinado usuário, identificando seguidores mútuos e aqueles que não seguem de volta.
 
-Na recente atualização, foi introduzida uma função que permite aos usuários clonarem os seguidores de outros perfis, além de possibilitar deixar de seguir aqueles que não os seguem de volta.
+Na atualização mais recente, foi adicionada uma funcionalidade que permite clonar os seguidores de outros perfis, além de possibilitar deixar de seguir usuários que não retribuem o follow.
 
 ## Como Usar
 1. Clone este repositório.
@@ -10,78 +10,49 @@ Na recente atualização, foi introduzida uma função que permite aos usuários
     ```bash
     https://nodejs.org/en
 
+3. em seguida instale as dependecias
+   ```bash
     npm install
-    npm install fs, express, nodemon, axios
-1. execute
+4. execute
     ```bash
-    node ./src/utility/user.js
-        > altere key/usuario.js
-        > email = 'login git';
-        > senha = 'senha git';
-1. execute
+        > crie e altere ./src/config/.env
+        > USER = 'login git';
+        > PASSWORD = 'senha git';
+5. execute
     ```bash
-    node ./src/utility/webScrapingData.js
+    node ./src/services/webScraping/webScrapingData.js
         > em seu celular 
         > Digite o número: ...
 
-3. Execute os seguintes comandos no seu terminal:
+6. Execute a api em seu terminal:
 
     ```bash
-    node src/checkFollower.js
-    para verificar quem não esta te seguindo de volta
+    node index.ts
 
-    node src/checkFollow.js
-    para verificar quem esta te seguindo e você não segue
-
-    node src/follow.js
-    para clonar seguidores de outros usuarios
-
-    node src/unfollow.js
-    para deixar se seguir quem não te segue
-## Exemplo de Saída
-    
     {
-    "seguidor 0": "usuário1",
-    "seguidor 1": "usuário2",
-    "erro": "Todos os seguidores estão seguindo de volta!"
+        "message": "Bem-vindo à API de Gerenciamento de Seguidores!",
+
+        "description": "Esta API permite verificar seguidores, seguir usuários automaticamente e monitorar alterações na lista de seguidores.",
+
+        "endpoints": {
+            "/check-follower": "Verifica se um usuário segue outro usuário.",
+            "/follow-users": "Segue automaticamente os seguidores de um usuário.",
+            "/check-unfollower": "Verifica se um usuário deixou de seguir outro.",
+            "/new-follower/:name": "Segue um novo usuário específico."
+        },
+
+        "note": "Para utilizar os endpoints que exigem um nome de usuário, passe o parâmetro 'name' na query string ou na URL.",
+        
+        "example": "/check-follower?name=usuario"
     }
 
-### ~ Api GitHub Followers Checker
-
-#### Como Usar
-
-1. Clone este repositório.
-2. Instale o Node.js, se ainda não o fez.
-3. Execute os seguintes comandos no seu terminal:
-
-    ```bash
-    npm install
-    npm install fs, express, nodemon, axios
-    nodemon index.js
-4. Acesse um navegador com seguinte endereço
-   
-    ```bash
-    http://localhost:3000/<usuário_a_ser_pesquisado>
-    
-Substitua <usuário_a_ser_pesquisado> pelo nome de usuário do GitHub que você deseja pesquisar (por exemplo, Ton Chyod-s).
-
-#### Exemplo de Saída
-    
-    {
-        "": "Welcome to the GitHub Followers Checker API",
-        "First": "Create user with your git - /usuario/:email/:password",
-        "Second": "Get token - /token",
-        "View followers": "Example - comparacaoSeguindo/:username",
-        "Get more followers": "Example - /seguir/:username/:user",
-        "Unfollow": "Example - /naoSeguir/:username",
-    }
 
 ## Contribuição
 
 Sinta-se à vontade para contribuir abrindo issues ou pull requests.
 
 ## Video
-### GitHub Followers Checker
+### GitHub Follower Manager
 <br>
 <div style="display: inline_block">
 <a href="https://www.youtube.com/@Ton-Chyod-s">
