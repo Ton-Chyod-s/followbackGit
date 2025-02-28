@@ -16,9 +16,15 @@
     "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
     "dotenv": "^16.4.7",
-    "express": "^4.19.2",
+    "express": "^4.21.2",
     "node-fetch": "^3.3.2",
     "nodemon": "^3.1.0",
     "puppeteer": "^22.7.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
   }
 }

@@ -1,7 +1,5 @@
 
 .env
+.vccode
 node_modules
-src/key/usuario.js
-src/utility/key/token.js
-src/utility/key/usuario.js
 .vercel
