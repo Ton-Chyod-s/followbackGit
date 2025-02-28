@@ -17,6 +17,7 @@ async function GetFollowingData(username: string, page: number): Promise<Followi
 
         const following: FollowingData[] = data.map((user: any) => ({
             Name: user.login,
+            // TODO: Add more fields
         }));
 
         return following;

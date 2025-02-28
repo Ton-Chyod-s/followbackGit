@@ -17,6 +17,7 @@ async function GetFollowersData(username: string, page: number): Promise<Followe
 
         const followers: FollowersData[] = data.map((user: any) => ({
             Name: user.login,
+            // TODO: Add more fields
         }));
 
         return followers;
