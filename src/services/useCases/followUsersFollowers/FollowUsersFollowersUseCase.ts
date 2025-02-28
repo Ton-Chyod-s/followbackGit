@@ -2,7 +2,7 @@ import { GetFollowersData } from "../../../requests/FollowersRequest";
 import { newFollower } from "../../../requests/FollowRequest";
 import { getUserData } from "../../../requests/UserRequest";
 
-require('dotenv').config({ path: ".env" });
+require('dotenv').config({ path: "src\\config\\.env" });
 
 export async function FollowUsersFollowers(userName: string): Promise<number | null> {
     const user = process.env.USER ?? '';

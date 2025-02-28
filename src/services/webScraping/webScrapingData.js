@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 const fs = require('node:fs');
 const path = require('path');
 
-require('dotenv').config({ path: ".env" });
+require('dotenv').config({ path: "src\\config\\.env" });
 
 const nome = process.env.USER;
 const senha = process.env.PASSWORD;

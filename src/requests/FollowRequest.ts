@@ -1,5 +1,5 @@
 
-require('dotenv').config({ path: ".env" });
+require('dotenv').config({ path: "src\\config\\.env" });
 
 export async function newFollower(newFollower: string): Promise<Boolean | null> {
     try{

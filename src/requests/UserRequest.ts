@@ -1,8 +1,6 @@
 import { GitHubUser } from "../models/request/IUserDataRequest";
 
-require('dotenv').config({  
-    path: process.env.NODE_ENV !== "main" ? ".env.testing" : ".env"
-  })
+require('dotenv').config({ path: "src\\config\\.env" });
 
 async function getUserData(username: string): Promise<GitHubUser | null> {
     try {
