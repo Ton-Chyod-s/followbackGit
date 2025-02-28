@@ -7,34 +7,59 @@ import { checkUnfollowAndFollow } from '../../services/useCases/checkUnfollowAnd
 const routers = Router();
 
 routers.get('/', (req: Request, res: Response) => {
-    res.json({'message': 'Hello World!'});
+    res.json({
+        message: "Bem-vindo à API de Gerenciamento de Seguidores!",
+        description: "Esta API permite verificar seguidores, seguir usuários automaticamente e monitorar alterações na lista de seguidores.",
+        endpoints: {
+            "/check-follower": "Verifica se um usuário segue outro usuário.",
+            "/follow-users": "Segue automaticamente os seguidores de um usuário.",
+            "/check-unfollower": "Verifica se um usuário deixou de seguir outro.",
+            "/new-follower/:name": "Segue um novo usuário específico."
+        },
+        note: "Para utilizar os endpoints que exigem um nome de usuário, passe o parâmetro 'name' na query string ou na URL.",
+        example: "/check-follower?name=usuario"
+    });
 });
 
 routers.get('/check-follower', async (req: Request, res: Response) => {
-    const name = req.query.name as string;
+    const name = validateUserName(req, res);
+    if (!name) return;
 
-    res.json(await CheckFollowerWithFollowing(name));
+    try {
+        const result = await CheckFollowerWithFollowing(name);
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ error: "Erro ao conferir seguidores do usuário." });
+    }
 });
 
 routers.get('/follow-users', async (req: Request, res: Response) => {
-    const name = req.query.name as string;
+    const name = validateUserName(req, res);
+    if (!name) return;
 
-    res.json(await FollowUsersFollowers(name));
+    try {
+        const result = await FollowUsersFollowers(name);
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ error: "Erro ao seguir seguidores do usuário." });
+    }
 });
 
 routers.get('/check-unfollower', async (req: Request, res: Response) => {
-    const name = req.query.name as string;
+    const name = validateUserName(req, res);
+    if (!name) return;
 
-    res.json(await checkUnfollowAndFollow(name));
+    try {
+        const result = await checkUnfollowAndFollow(name);
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ error: "Erro ao consultar usuário seguir." });
+    }
 });
 
 routers.put('/new-follower/:name', async (req: Request, res: Response): Promise<void> => {
-    const name = req.params.name;
-
-    if (!name) {
-        res.status(400).json({ error: "O nome do usuário é obrigatório." });
-        return;
-    }
+    const name = validateUserName(req, res);
+    if (!name) return;
 
     try {
         const result = await newFollower(name);
@@ -43,5 +68,14 @@ routers.put('/new-follower/:name', async (req: Request, res: Response): Promise<
         res.status(500).json({ error: "Erro ao seguir o usuário." });
     }
 });
+
+function validateUserName(req: Request, res: Response): string | null {
+    const name = req.query.name as string || req.params.name;
+    if (!name) {
+        res.status(400).json({ error: "O nome do usuário é obrigatório." });
+        return null;
+    }
+    return name;
+}
 
 export { routers };
