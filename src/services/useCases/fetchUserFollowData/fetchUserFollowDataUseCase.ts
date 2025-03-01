@@ -25,6 +25,9 @@ export async function fetchUserFollowData(userName: string): Promise<{ followers
 
             followerList?.forEach(follower => listFollowers.add(follower.Name));
             followingList?.forEach(following => listFollowing.push(following.Name));
+
+            const randomDelay = Math.floor(Math.random() * 2000) + 1000;
+            await new Promise(resolve => setTimeout(resolve, randomDelay));
         }
 
         return {
